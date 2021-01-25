@@ -6,9 +6,9 @@ import { useHistory } from "react-router-dom"
 import { Formik, Form } from 'formik';
 import * as yup from "yup";
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/me/actions';
+import { login } from '../../../redux/me/actions';
 import { LoginInput } from './LoginInput';
-import { CustomField } from '../Common/FormComponents/FormComponents';
+import { CustomField } from '../../Common/FormComponents/FormComponents';
 
 type LoginValuesType = {
 	login: string

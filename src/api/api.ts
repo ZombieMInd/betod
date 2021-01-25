@@ -4,7 +4,7 @@ import { showAlert } from '../utils/showAlert';
 import { AlertifyStatusEnum } from '../types/types';
 import { MeType } from '../types/me';
 
-export let apiURL = "https://api.2bara.net/"
+export let apiURL = "https://mindcoat.site/"
 
 
 const instance = Axios.create({
@@ -35,14 +35,24 @@ export type APIListParamsType = {
 
 export const userAPI = {
 	login(login: string, password: string) {
-		return instance.post(`admin/auth/login`, { login, password })
+		return instance.post(`login/`, { 'userName' : login, 'password' : password })
 			.then(response => response)
 			.catch(err => handleErr(err));
 	},
 	getUserInfo() {
-		return instance.get(`admin/profile`)
+		return instance.get(`users/`)
 			.then(response => response)
 			.catch(err => handleErr(err));
 	},
+	getCourseDataById(id : number) {
+		return instance.get(`courses/` + id)
+			.then(response => response)
+			.catch(err => handleErr(err));
+	},
+	editProfile(profile: MeType) {
+		return instance.patch(`admin/profile`, profile)
+			.then(response => response)
+			.catch(err => handleErr(err));
+	}
 }
 

@@ -14,3 +14,17 @@ export type EmptyFuncType = () => void
 export enum FetchingNamesEnum {
 	
 }
+
+export type CoursePreviewData = {
+	id : number,
+	name : string,
+	description : string,
+	pic : string,
+}
+
+export type CourseData = {
+	courseName: string,
+	description : string,
+	problems : number[],
+	users : number[],
+}
