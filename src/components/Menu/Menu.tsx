@@ -1,16 +1,37 @@
 import React, { FC, useState } from 'react'
 import s from './Menu.module.scss'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Logo from './Logo';
 import { Link } from 'react-router-dom';
+import { AppStateType } from '../../types/types';
 
 const Menu: FC = () => {
 	const dispatch = useDispatch()
+	const logged = useSelector<AppStateType, boolean>(state => state.me.logged);
+	const authorClick = () => {
+		console.log("u r author now!");
+	}
+	const studentClick = () => {
+		console.log("u r student now!");
+	}
+	let btns : JSX.Element;
+	if (logged) {
+		btns = <>
+			<button className={s.loginBtn} onClick={authorClick}>автор</button>
+			<button className={s.loginBtn} onClick={studentClick}>студент</button>
+		</>;
+	} else {
+		btns =  
+			<Link to="/login" className={s.loginBtn}>вход</Link>
+		;
+	}
 
 	return (
-		<div className={s.Menu}>
-			<Logo/>
-			<Link to="/login">Вход</Link>
+		<div className={s.header}>
+			<div className={s.inner}>
+				<Logo/>
+				{btns}
+			</div>
 		</div>
 	)
 }

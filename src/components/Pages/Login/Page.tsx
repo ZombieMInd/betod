@@ -1,13 +1,15 @@
 import React, { FC, useState } from 'react'
-import s from './Main.module.scss'
+import s from './Login.module.scss'
 import { useDispatch } from 'react-redux';
 import CourseGrid from '../../Courses/Grid';
+import ContentSwitcher from '../../Common/Helpers/ContentSwitcher';
 import { SwitcherProps } from '../../../types/types';
-import Login from '../Login/Login';
+import Login from './Login';
 import Course from '../../Courses/Course';
+import Registration from './Registration';
+import { login } from '../../../redux/me/actions';
 
-const Main: FC = () => {
-	const dispatch = useDispatch()
+const LoginPage: FC = () => {
 	const content : SwitcherProps[] = [
 		{
 			name : "Вход",
@@ -15,14 +17,14 @@ const Main: FC = () => {
 		},
 		{
 			name : "Регистрация",
-			content: <Course/>
+			content: <Registration/>
 		},
 	];
 	return (
 		<div className={s.contentWrapper}>
-			<CourseGrid/>
+			<ContentSwitcher contents={content}/>
 		</div>
 	)
 }
 
-export default Main;
+export default LoginPage;

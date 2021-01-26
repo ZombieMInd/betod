@@ -1,0 +1,44 @@
+@import '../../assets/scss/Colors.scss';
+@import '../../App.scss';
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 24px;
+
+    .preview {
+        height: 240px;
+
+        .wrapper {   
+            text-decoration: none;
+            
+
+            .header {
+                position: relative;
+                height: 110px;
+                padding: 15px;
+                background-color: $course-preview-jopa;
+
+                .image {
+                    // display: none;
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    top: 0;
+                    z-index: 0;
+                }
+
+                .name {
+                    color: #fff;
+                    text-decoration: none;
+                    
+                }
+            }
+
+            .footer {
+
+            }
+        }
+    }
+}

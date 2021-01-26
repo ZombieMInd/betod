@@ -49,6 +49,11 @@ export const userAPI = {
 			.then(response => response)
 			.catch(err => handleErr(err));
 	},
+	getCourseData() {
+		return instance.get(`courses/`)
+			.then(response => response)
+			.catch(err => handleErr(err));
+	},
 	editProfile(profile: MeType) {
 		return instance.patch(`admin/profile`, profile)
 			.then(response => response)

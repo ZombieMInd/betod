@@ -3,6 +3,7 @@ import s from './Courses.module.scss'
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { CoursePreviewData } from '../../types/types';
+import mockPic from '../../assets/img/book.png';
 
 export interface CoursePreviewProps {
 	id : number,
@@ -12,17 +13,17 @@ export interface CoursePreviewProps {
 }
 
 const CoursePreview: FC<CoursePreviewData> = ({id, pic, name, description }) => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	return (
-		<div className={s.CoursePreview}>
-			<Link to={"/course/" + id}>
-				<div className={s.PreviewHeader}>
-					<img src={pic} alt="image" className={s.PreviewImg}/>
-					<div className={s.PreviewName}>{name}</div>
+		<div className={s.preview}>
+			<Link to={"/course/" + id} className={s.wrapper}>
+				<div className={s.header}>
+					<img src={mockPic} alt="image" className={s.image}/>
+					<div className={s.name}>{name}</div>
 				</div>
-				<div className={s.PreviewFooter}>
-					<div className={s.PreviewDesc}>{description}</div>
-					<div className={s.PreviewDetails}>details</div>
+				<div className={s.footer}>
+					<div className={s.description}>{description}</div>
+					<div className={s.details}>details</div>
 				</div>
 			</Link>
 		</div>

@@ -11,6 +11,7 @@ import Menu from './components/Menu/Menu';
 import Main from './components/Pages/Main/Main';
 import Footer from './components/Menu/Footer';
 import Course from './components/Courses/Course';
+import LoginPage from './components/Pages/Login/Page';
 // import NotFound from './components/NotFound/NotFound';
 // import Login from './components/Login/Login';
 // import Header from './components/Header/Header'
@@ -24,14 +25,14 @@ const App = ({ ...props }) => {
     useLayoutEffect(() => {
         dispatch(authUser())
     }, []);
-    if (!logged) {
-        return <Login />
-    }
+    // if (!logged) {
+    //     return <Login />
+    // }
     return (
         <>
         <Menu/>
         <Switch>
-            <Route path="/login" component={Login}/>
+            <Route path="/login" component={LoginPage}/>
             <Route path="/course/:id" component={Course}/>
             <Route path="/" component={Main}/>
         </Switch>

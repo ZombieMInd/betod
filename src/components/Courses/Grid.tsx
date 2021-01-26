@@ -1,7 +1,9 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import s from './Courses.module.scss'
 import { useDispatch } from 'react-redux';
 import CoursePreview from './Preview';
+import { CourseData } from '../../types/types';
+import { userAPI } from '../../api/api';
 
 // mock 
 const courseList = [
@@ -21,17 +23,27 @@ const courseList = [
 
 const CourseGrid: FC = () => {
 	const dispatch = useDispatch();
-	const gridItems = courseList.map((course) => 
+	const [data, setData] = useState<CourseData[]>();
+ 
+	useEffect( () => {
+		async function asyncWrap() {
+			const result = await userAPI.getCourseData();
+			setData(result?.data);
+		};
+		asyncWrap();
+	}, []);
+
+	const gridItems = data?.map((course) => 
 		<CoursePreview 
 			id={course.id}
-			pic={course.picSrc}
-			name={course.name}
+			pic={course.pic}
+			name={course.courseName}
 			description={course.description}
 		/>
 	)
 
 	return (
-		<div className={s.CoursePreview}>
+		<div className={s.grid}>
 			{gridItems}
 		</div>
 	)

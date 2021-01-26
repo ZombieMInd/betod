@@ -23,8 +23,45 @@ export type CoursePreviewData = {
 }
 
 export type CourseData = {
+	id : number,
 	courseName: string,
 	description : string,
 	problems : number[],
 	users : number[],
+	pic : string,
+}
+
+export type UserComment = {
+	name : string,
+	rating : number,
+	message : string,
+	date : string
+}
+
+export type CourseStatistic = {
+	members : number,
+	finished : number,
+	started : number,
+}
+
+export type CourseAuthor = {
+	name : string,
+	nickname : string,
+	pic : string,
+}
+
+export type SwitcherProps = {
+	name : string,
+	content : any,
+}
+
+export type CourseProgram = {
+	chapters : {
+		name : string,
+		link : string,
+		sections : {
+			name : string,
+			link : string,
+		}[],
+	}[],
 }
