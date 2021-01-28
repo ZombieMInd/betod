@@ -6,7 +6,7 @@
 	flex-direction: column;
 	justify-items: center;
 	position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 16px;
 
     &.required {
         & label:after {
@@ -21,7 +21,6 @@
 
     & .fieldLabel {
         font-weight: bold;
-        margin-bottom: 5px;
         font-size: 14px;
     }
 

@@ -5,7 +5,7 @@ import CoursePreview from './Preview';
 import { CourseData } from '../../types/types';
 import { userAPI } from '../../api/api';
 
-// mock 
+// moke 
 const courseList = [
 	{
 		id : 11,

@@ -12,17 +12,19 @@ import { login } from '../../../redux/me/actions';
 const LoginPage: FC = () => {
 	const content : SwitcherProps[] = [
 		{
-			name : "Вход",
+			name : "Войти",
 			content: <Login/>
 		},
 		{
-			name : "Регистрация",
+			name : "Зарегистрироваться",
 			content: <Registration/>
 		},
 	];
 	return (
 		<div className={s.contentWrapper}>
-			<ContentSwitcher contents={content}/>
+			<div className={s.loginWrapper}>
+				<ContentSwitcher contents={content}/>
+			</div>
 		</div>
 	)
 }

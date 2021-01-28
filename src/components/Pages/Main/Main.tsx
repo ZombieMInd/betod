@@ -5,22 +5,25 @@ import CourseGrid from '../../Courses/Grid';
 import { SwitcherProps } from '../../../types/types';
 import Login from '../Login/Login';
 import Course from '../../Courses/Course';
+import ContentSwitcher from '../../Common/Helpers/ContentSwitcher';
+import Search from '../../Search/Search';
 
 const Main: FC = () => {
 	const dispatch = useDispatch()
 	const content : SwitcherProps[] = [
 		{
-			name : "Вход",
-			content: <Login/>
+			name : "Основные",
+			content: <CourseGrid/>
 		},
 		{
-			name : "Регистрация",
-			content: <Course/>
+			name : "Пользовательские",
+			content: <CourseGrid/>
 		},
 	];
 	return (
 		<div className={s.contentWrapper}>
-			<CourseGrid/>
+			<Search/>
+			<ContentSwitcher contents={content}/>
 		</div>
 	)
 }

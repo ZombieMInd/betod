@@ -1,9 +1,24 @@
 @import '../../../assets/scss/Colors.scss';
-@import '../../../App.scss';
 
-.contentWrapper {
-    @include content;
+.switcherBtn {
+    font-size: 20px;
+    line-height: 24px;
     padding: {
-        top: 100px;
+        bottom: 4px;
+    };
+    border: {
+        bottom: 4px solid rgba(0, 0, 0, 0);
+    };
+
+    &:last-of-type {
+        margin: {
+            left: 24px;
+        };
+    }
+
+    &.active {
+        border: {
+            bottom: 4px solid black;
+        };
     }
 }

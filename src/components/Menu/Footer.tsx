@@ -7,7 +7,7 @@ const Footer: FC = () => {
 
 	return (
 		<div className={s.Footer}>
-			Footer
+			
 		</div>
 	)
 }

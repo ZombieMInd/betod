@@ -35,7 +35,7 @@ export type APIListParamsType = {
 
 export const userAPI = {
 	login(login: string, password: string) {
-		return instance.post(`login/`, { 'userName' : login, 'password' : password })
+		return instance.post(`login`, { 'userName' : login, 'password' : password })
 			.then(response => response)
 			.catch(err => handleErr(err));
 	},
