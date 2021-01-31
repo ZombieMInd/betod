@@ -58,7 +58,7 @@ export const authUser = (): types.ThunksType => async (dispatch) => {
 		dispatch(setAccessToken(token))
 		dispatch(setLogged(true))
 
-		dispatch(getUserInfo())
+		// dispatch(getUserInfo())
 	}
 }
 

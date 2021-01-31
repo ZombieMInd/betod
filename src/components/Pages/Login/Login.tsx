@@ -1,8 +1,9 @@
 
 
 import React, { FC, useState } from 'react'
-import s from './Login.module.scss'
-import { useHistory } from "react-router-dom"
+import s from './Login.module.scss';
+// import b from '../../../assets/scss/Buttons.scss';
+import { Link, useHistory } from "react-router-dom"
 import { Formik, Form } from 'formik';
 import * as yup from "yup";
 import { useDispatch } from 'react-redux';
@@ -59,8 +60,11 @@ const Login: FC = () => {
 							type="password"
 							className={s.loginInputWrapper}
 						/>
-						<button className={s.loginBtn} disabled={isSubmitting}>Войти</button>
-
+						<div className={s.footer}>
+							<Link to="/remember" className={s.remember}>я забыл пароль</Link>
+							<button className={s.loginBtn} disabled={isSubmitting}>Войти</button>
+						</div>
+						
 						<div className={s.errorBlock}>
 							<p>{err}</p>
 						</div>

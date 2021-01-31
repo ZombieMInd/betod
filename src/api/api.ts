@@ -16,6 +16,7 @@ const instance = Axios.create({
 
 export const setTokenForAPI = (token: string) => {
 	instance.defaults.headers.Authorization = "Bearer " + token;
+	console.log(instance.defaults.headers.Authorization);
 }
 
 const handleErr = async (err: AxiosError) => {
