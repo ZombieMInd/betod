@@ -32,7 +32,7 @@ const Registration: FC = () => {
 	}
 
 	return (
-		<div className={s.loginPage}>
+		<div className={s.login}>
 			<Formik
 				
 				validateOnChange={true}
@@ -45,12 +45,11 @@ const Registration: FC = () => {
 			>
 				{({ isSubmitting }) => (
 					<Form className={s.loginForm}>
-						<h2 className={s.loginTitle}>Регистрация</h2>
 						<CustomField
 							name="login"
 							placeholder="Логин"
 							Component={LoginInput}
-							style={{ marginBottom: '38px' }}
+							className={s.loginInputWrapper}
 						/>
 						
 						<CustomField
@@ -58,8 +57,12 @@ const Registration: FC = () => {
 							placeholder="Пароль"
 							Component={LoginInput}
 							type="password"
+							className={s.loginInputWrapper}
 						/>
-						<button className={s.loginBtn} disabled={isSubmitting}>Войти</button>
+						<div className={s.footer}>
+							<div className={s.remember}></div>
+							<button className={s.loginBtn} disabled={isSubmitting}>Далее</button>
+						</div>
 
 						<div className={s.errorBlock}>
 							<p>{err}</p>

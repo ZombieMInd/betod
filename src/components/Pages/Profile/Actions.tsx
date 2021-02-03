@@ -7,27 +7,14 @@ import Login from '../Login/Login';
 import Course from '../../Courses/Course';
 import ContentSwitcher from '../../Common/Helpers/ContentSwitcher';
 import Search from '../../Search/Search';
-import Main from '../Main/Main';
-import ProfileMain from './Main';
-import CourseUser from '../../Courses/User';
 
-const Profile: FC = () => {
-	const dispatch = useDispatch()
-	const content : SwitcherProps[] = [
-		{
-			name : "Сводка",
-			content: <ProfileMain/>
-		},
-		{
-			name : "Мои курсы",
-			content: <CourseUser/>
-		},
-	];
+const Actions: FC = () => {
+	
 	return (
 		<div className={s.contentWrapper}>
-			<ContentSwitcher contents={content}/>
+			actions
 		</div>
 	)
 }
 
-export default Profile;
+export default Actions;

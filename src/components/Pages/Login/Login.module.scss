@@ -36,10 +36,15 @@
 			.footer {
 				display: flex;
 				justify-content: space-between;
+				align-items: center;
 
 				.remember {
 					font-size: 12px;
 					font-weight: 400;
+					color: #4F4F4F;
+					text-decoration: underline;
+					height: 100%;
+					margin-left: 20px;
 				}
 				.loginBtn {
 					@include button;

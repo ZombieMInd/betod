@@ -62,7 +62,7 @@ const Login: FC = () => {
 						/>
 						<div className={s.footer}>
 							<Link to="/remember" className={s.remember}>я забыл пароль</Link>
-							<button className={s.loginBtn} disabled={isSubmitting}>Войти</button>
+							<button className={s.loginBtn} disabled={isSubmitting}>Далее</button>
 						</div>
 						
 						<div className={s.errorBlock}>

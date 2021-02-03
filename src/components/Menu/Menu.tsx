@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Logo from './Logo';
 import { Link } from 'react-router-dom';
 import { AppStateType } from '../../types/types';
+import Avatar from '../Pages/Profile/Avatar';
 
 const Menu: FC = () => {
 	const dispatch = useDispatch()
@@ -19,6 +20,7 @@ const Menu: FC = () => {
 		btns = <>
 			<button className={s.loginBtn} onClick={authorClick}>автор</button>
 			<button className={s.loginBtn} onClick={studentClick}>студент</button>
+			<Avatar/>
 		</>;
 	} else {
 		btns =  
