@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import s from './Helpers.module.scss'
 
 interface Props {
-	header : string;
+	header : any;
 }
 
 const CustomDropdown: FC<Props> = ({header, children} ) => {

@@ -16,7 +16,6 @@ const instance = Axios.create({
 
 export const setTokenForAPI = (token: string) => {
 	instance.defaults.headers.Authorization = "Bearer " + token;
-	console.log(instance.defaults.headers.Authorization);
 }
 
 const handleErr = async (err: AxiosError) => {
@@ -42,6 +41,11 @@ export const userAPI = {
 	},
 	getUserInfo() {
 		return instance.get(`users/`)
+			.then(response => response)
+			.catch(err => handleErr(err));
+	},
+	getUserCourses(id : number) {
+		return instance.get(`users/` + id + `/courses/`)
 			.then(response => response)
 			.catch(err => handleErr(err));
 	},

@@ -6,9 +6,10 @@ import { SwitcherProps } from '../../../types/types';
 
 interface Contents {
 	contents :  SwitcherProps[];
+	style? : string
 }
 
-const ContentSwitcher: FC<Contents> = ({contents} : Contents) => {
+const ContentSwitcher: FC<Contents> = ({contents, style} : Contents) => {
 	const dispatch = useDispatch();
 	const data : SwitcherProps[] = contents;
 
@@ -39,7 +40,7 @@ const ContentSwitcher: FC<Contents> = ({contents} : Contents) => {
 
 	return (
 		<div className="switcher">
-			<div className="switcherBtns">
+			<div className={s.switcherBtns} style={{justifyContent: style}}>
 				{btns}
 			</div>
 			<div className="switcherBody">

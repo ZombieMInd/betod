@@ -1,11 +1,13 @@
 @import '../../assets/scss/Colors.scss';
 @import '../../assets/scss/CommonStyle.scss';
+@import '../../assets/scss/Buttons.scss';
 
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 24px;
     row-gap: 24px;
+    margin-top: 24px;
 
     .preview {
         height: 240px;
@@ -17,8 +19,20 @@
             .header {
                 position: relative;
                 height: 110px;
-                padding: 15px;
-                background-color: $course-preview-jopa;
+                padding: 21px 25px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(101, 101, 101, 0.65);
+                    z-index: 2;
+                }
 
                 .image {
                     // display: none;
@@ -30,6 +44,9 @@
                 }
 
                 .name {
+                    @include h5;
+                    position: relative;
+                    z-index: 3;
                     color: #fff;
                     text-decoration: none;
                     
@@ -37,8 +54,61 @@
             }
 
             .footer {
-
+                @include txtDesc;
+                position: relative;
+                height: 130px;
+                background-color: #C4C4C4;
+                padding: {
+                    top: 23px;
+                    left: 25px;
+                    right: 45px;
+                };
+                .details {
+                    
+                    position: absolute;
+                    bottom: 16px;
+                    color: #4F4F4F;
+                }
             }
         }
     }
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.course {
+    @include content; 
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    .body {
+        margin-top: 112px;
+
+        .header {
+            @include h2;
+
+        }
+
+        .desc {
+            @include txtRegular;
+            margin: {
+                top: 40px;
+                bottom: 24px;
+            }
+        }
+
+        .enter {
+            @include button;
+            background-color: #AFF1CB;
+            margin-bottom: 80px;
+        }
+
+        
+    }
+}
+
+.switcherBtns {
+    justify-content: space-between;
 }

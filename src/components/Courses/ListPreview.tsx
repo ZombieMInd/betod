@@ -12,22 +12,22 @@ export interface CoursePreviewProps {
 	description : string
 }
 
-const CoursePreview: FC<CoursePreviewData> = ({id, pic, name, description }) => {
+const CourseListPreview: FC<CoursePreviewData> = ({id, pic, name, description }) => {
 	const dispatch = useDispatch();
 	return (
-		<div className={s.preview}>
+		<div className={s.listPreview}>
 			<Link to={"/course/" + id} className={s.wrapper}>
-				<div className={s.header} style={{backgroundImage: "url(" + mockPic + ")"}}>
-					{/* <img src={mockPic} alt="image" className={s.image}/> */}
+				<div className={s.header}>
+					<img src={mockPic} alt="image" className={s.image}/>
 					<div className={s.name}>{name}</div>
 				</div>
 				<div className={s.footer}>
 					<div className={s.description}>{description}</div>
-					<div className={s.details}>Константинопольский М. Ш.</div>
+					<div className={s.details}>details</div>
 				</div>
 			</Link>
 		</div>
 	)
 }
 
-export default CoursePreview;
+export default CourseListPreview;

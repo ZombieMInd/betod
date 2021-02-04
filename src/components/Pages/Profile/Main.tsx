@@ -12,13 +12,14 @@ import Info from './Info';
 import CourseLast from '../../Courses/Last';
 import { Dropdown } from '../../Common/FormComponents/Components/DropDown';
 import CustomDropdown from '../../Common/Helpers/CustomDropdown';
+import CourseList from '../../Courses/List';
 
 const ProfileMain: FC = () => {
 	
 	return (
 		<div className={s.contentWrapper}>
 			<CustomDropdown header="Последние действия"><Actions/></CustomDropdown>
-			<CustomDropdown header="Последние курсы"><CourseLast/></CustomDropdown>
+			<CustomDropdown header="Последние курсы"><CourseList/></CustomDropdown>
 			<Info/>
 		</div>
 	)

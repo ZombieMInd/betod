@@ -44,9 +44,14 @@ export const login = (login: string, password: string, errorFunc: (message: stri
 	if (response) {
 		if (response.status === 200) {
 			Cookies.set('access-token', response.data.token, { expires: 14 });
-			await dispatch(authUser())
+			await dispatch(authUser());
+			const userInfo = {
+				id : response.data.userid,
+				name : response.data.username,
+			}
+			await dispatch(setUserInfo(userInfo));
 		} else {
-			errorFunc('Неверный логин или пароль')
+			errorFunc('Неверный логин или пароль');
 		}
 	}
 }

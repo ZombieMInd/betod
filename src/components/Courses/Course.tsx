@@ -8,7 +8,7 @@ import Comments from './Comments';
 import Statistic from './Statistic';
 import Authors from './Authors';
 import ContentSwitcher from '../Common/Helpers/ContentSwitcher';
-import Program from './Program';
+import Program from './Program/Program';
 
 const Course: FC = (props: any) => {
 	let { id } : any = useParams();
@@ -25,10 +25,6 @@ const Course: FC = (props: any) => {
 		asyncWrap();
 	}, []);
 
-	const testFunc = () => {
-		console.log('test');
-	}
-
 	const courseContents : SwitcherProps[] = [
 		{
 			name : "Программа курса",
@@ -41,16 +37,17 @@ const Course: FC = (props: any) => {
 	];
 
 	return (
-		<div className={s.Course}>
-			<div className={s.CourseHeader}>{data?.courseName}</div>
-			<div className={s.CourseDesc}>Описание: {data?.courseName}</div>
-			<button onClick={testFunc}>Поступить</button>
-			<div className={s.CourseCommentBlock}>
-				<Statistic/>
+		<div className={s.course}>
+			<div className={s.body}>
+				<div className={s.header}>{data?.courseName}</div>
+				<div className={s.desc}><span className={s.bold}> Описание: </span>{data?.courseName}</div>
+				<button className={s.enter}>Поступить</button>
+				<ContentSwitcher contents={courseContents} style="space-between"/>
 			</div>
-			<Authors/>
-			<ContentSwitcher contents={courseContents}/>
-
+			<div className={s.right}>
+				<Statistic/>
+				<Authors/>
+			</div>
 		</div>
 	)
 }

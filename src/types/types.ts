@@ -65,3 +65,28 @@ export type CourseProgram = {
 		}[],
 	}[],
 }
+
+export type ProfileMini = {
+	name : string,
+	tag : string,
+	bio : string,
+	statistic : ProfileStatistics,
+}
+
+export type ProfileStatistics = {
+	current : number,
+	finished : number,
+	all : number,
+}
+
+export enum UserActionTypes {
+	UPDATE = 'update',
+	NEW_MESSAGE = 'new message',
+	FRIEND_REQUEST = 'friend request',
+	TASK_CHECKED = 'task checked',
+}
+
+export type UserType = {
+	name : string,
+	id : number,
+}

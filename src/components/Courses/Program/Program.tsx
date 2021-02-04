@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
-import s from './Courses.module.scss'
+import s from './Program.module.scss'
 import { useDispatch } from 'react-redux';
-import { CourseProgram, UserComment } from '../../types/types';
+import { CourseProgram, UserComment } from '../../../types/types';
 import { Link } from 'react-router-dom';
+import CustomDropdown from '../../Common/Helpers/CustomDropdown';
 
 const mockData : CourseProgram = {
 	chapters : [
@@ -60,20 +61,25 @@ const Program: FC = () => {
 	// }, []);
 
 	const program = data.chapters.map((chapter) => 
-		<div className={s.CourseComment}>
-			<div className={s.CourseCommentAuthor}>
-				<Link to={chapter.link}>{chapter.name}</Link>
-			</div>
-			{chapter.sections.map((section) => 
-				<div className={s.CourseCommentAuthor}>
-					<Link to={section.link}>{section.name}</Link>
+		<div className={s.chapter}>
+			<CustomDropdown header={
+				<div className={s.name}>
+					<Link to={chapter.link}>{chapter.name}</Link>
 				</div>
-			)}
+				}>
+				<ol className={s.sections}>
+					{chapter.sections.map((section) => 
+						<li className={s.section}>
+							<Link to={section.link}>{section.name}</Link>
+						</li>
+					)}
+				</ol>
+			</CustomDropdown>
 		</div>
 	)
 
 	return (
-		<div className={s.Course}>
+		<div className={s.program}>
 			{program}
 		</div>
 	)

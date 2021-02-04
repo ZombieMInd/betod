@@ -19,7 +19,6 @@ export const Dropdown: FC<DropdownPropsType> = ({ ...props }) => {
 
 
 	useEffect(() => {
-	console.log(props)
 
 		// if (props.value) {
 			setSelectedOption(props.value)

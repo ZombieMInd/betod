@@ -1,0 +1,40 @@
+@import '../../../assets/scss/Colors.scss';
+@import '../../../assets/scss/CommonStyle.scss';
+@import '../../../assets/scss/Buttons.scss';
+
+.program {
+    margin-top: 34px;
+
+    .chapter {
+        margin-bottom: 16px;
+
+        .name {
+            @include h6;
+            background-color: #F2F2F2;
+            padding: 5px 16px;
+        }
+
+        .sections {
+            padding: 4px 16px;
+            list-style: none;
+            counter-reset: my-awesome-counter;
+
+            li {
+                counter-increment: my-awesome-counter;
+                position: relative;
+
+                &::before {
+                    content: counter(my-awesome-counter) ". ";
+                    position: absolute;
+                    left: -5px;
+                }
+            }
+
+            .section {
+                padding-left: 8px;
+                @include txtDesc;
+            }
+        }
+        
+    }
+}

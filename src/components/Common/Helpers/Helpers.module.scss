@@ -1,34 +1,39 @@
 @import '../../../assets/scss/Colors.scss';
+@import '../../../assets/scss/CommonStyle.scss';
 
-.switcherBtn {
-    font-size: 20px;
-    line-height: 24px;
-    padding: {
-        bottom: 4px;
-    };
-    border: {
-        bottom: 4px solid rgba(0, 0, 0, 0);
-    };
+.switcherBtns {
+    display: flex;
 
-    &:last-of-type {
-        margin: {
-            left: 24px;
+    .switcherBtn {
+        @include h5;
+        font-size: 20px;
+        line-height: 24px;
+        padding: {
+            bottom: 4px;
         };
-    }
-
-    &.active {
         border: {
-            bottom: 4px solid black;
+            bottom: 4px solid rgba(0, 0, 0, 0);
         };
+        color: #828282;
+
+        &:last-of-type {
+            margin: {
+                left: 24px;
+            };
+        }
+
+        &.active {
+            color: #000;
+            border: {
+                bottom: 4px solid black;
+            };
+        }
     }
 }
 
 .dropdown {
 
     .header {
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 24px;
         cursor: pointer;
     }
 

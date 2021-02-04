@@ -1,52 +1,40 @@
 // @import url('/src/assets/fonts/Montserrat/stylesheet.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body {
-	font-family: 'Montserrat';
-}
+
 
 @mixin content {
 	max-width: 1032px;
 	margin: 0 auto;
 }
 
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-h1 {
-    font-size: 36px;
-    font-family: 'Montserrat Bold';
-}
-
-h2 {
-    font-size: 32px;
-    font-family: 'Montserrat Semi Bold';
-}
-
-h3 {
-    font-size: 24px;
-    font-family: 'Montserrat Black';
-}
-
-h4 {
-    font-size: 24px;
-    font-family: 'Montserrat Semi Bold';
-}
-
-h5 {
-    font-size: 20px;
-    font-family: 'Montserrat Bold';
-}
-
-h6 {
-    font-size: 18px;
-    font-family: 'Montserrat Semi Bold';
-}
 
 @mixin txtRegular {
+    font-weight: 400;
     font-size: 18px;
-    font-family: 'Montserrat';
+    line-height: 24px;
+}
+
+@mixin h2 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+@mixin h5 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+@mixin h6 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@mixin txtDesc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
 }

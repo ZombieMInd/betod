@@ -10,6 +10,7 @@ import Search from '../../Search/Search';
 import Main from '../Main/Main';
 import ProfileMain from './Main';
 import CourseUser from '../../Courses/User';
+import CourseList from '../../Courses/List';
 
 const Profile: FC = () => {
 	const dispatch = useDispatch()
@@ -20,7 +21,7 @@ const Profile: FC = () => {
 		},
 		{
 			name : "Мои курсы",
-			content: <CourseUser/>
+			content: <CourseList/>
 		},
 	];
 	return (

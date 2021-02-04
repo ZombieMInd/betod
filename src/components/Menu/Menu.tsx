@@ -32,7 +32,7 @@ const Menu: FC = () => {
 		<div className={s.header}>
 			<div className={s.inner}>
 				<Logo/>
-				{btns}
+				<div className={s.control}>{btns}</div>
 			</div>
 		</div>
 	)

@@ -2,6 +2,49 @@
 @import './assets/scss/Reset.scss';
 @import './assets/scss/CommonStyle.scss';
 
+body {
+	font-family: 'Montserrat';
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 36px;
+    font-family: 'Montserrat Bold';
+}
+
+h2 {
+    font-size: 32px;
+    font-family: 'Montserrat Semi Bold';
+}
+
+h3 {
+    font-size: 24px;
+    font-family: 'Montserrat Black';
+}
+
+h4 {
+    font-size: 24px;
+    font-family: 'Montserrat Semi Bold';
+}
+
+h5 {
+    font-size: 20px;
+    font-family: 'Montserrat Bold';
+}
+
+h6 {
+    font-size: 18px;
+    font-family: 'Montserrat Semi Bold';
+}
 
 .app-content {
 	display: flex;
