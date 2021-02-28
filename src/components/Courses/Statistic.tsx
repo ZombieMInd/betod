@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import s from './Courses.module.scss'
 import { useDispatch } from 'react-redux';
 import { CourseStatistic } from '../../types/types';
+import { styles } from './styles';
+import withStyles, { WithStylesProps } from 'react-jss';
 
 const mockData : CourseStatistic = {
 	members : 956,
@@ -9,7 +11,11 @@ const mockData : CourseStatistic = {
 	started : 149,
 };
 
-const Statistic: FC = () => {
+interface IProps extends WithStylesProps<typeof styles> {
+	
+}
+
+const Statistic: FC<IProps> = ({classes}) => {
 	const dispatch = useDispatch();
 
 	const data = mockData;
@@ -25,18 +31,21 @@ const Statistic: FC = () => {
 
 
 	return (
-		<div className={s.CourseStatistic}>
-			<div className={s.CourseStatisticNumber}>
+		<div className={classes.CourseStatistic}>
+			<div className={classes.number}>
 				{data.members}
+				<div className={classes.text}>поступили</div>
 			</div>
-			<div className={s.CourseStatisticNumber}>
+			<div className={classes.number}>
 				{data.started}
+				<div className={classes.text}>учатся</div>
 			</div>
-			<div className={s.CourseStatisticNumber}>
+			<div className={classes.number}>
 				{data.finished}
+				<div className={classes.text}>закончили</div>
 			</div>
 		</div>
 	)
 }
 
-export default Statistic;
+export default withStyles(styles)(Statistic);

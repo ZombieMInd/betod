@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, FC } from 'react';
+import React, { useLayoutEffect, FC, useEffect } from 'react';
 import { Route, withRouter, useHistory } from "react-router-dom"
 import { Switch, RouteComponentProps, Router } from 'react-router'
 import './App.scss'
@@ -26,6 +26,9 @@ const App = ({ ...props }) => {
     useLayoutEffect(() => {
         dispatch(authUser())
     }, []);
+    useEffect(() => {
+        document.title = "Betod"
+     }, []);
     // if (!logged) {
     //     return <Login />
     // }

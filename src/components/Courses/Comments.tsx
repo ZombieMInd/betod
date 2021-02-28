@@ -2,8 +2,33 @@ import React, { FC } from 'react'
 import s from './Courses.module.scss'
 import { useDispatch } from 'react-redux';
 import { UserComment } from '../../types/types';
+import mockPic from '../../assets/img/ava.png';
 
 const mockData : UserComment[] = [
+	{
+		name : "Григорий томатов",
+		rating : 4,
+		message : "Курс довольно хорош, бесплатен, есть задачи для решения. Но во второй половине мало практики, иногда объяснения очень непонятные, но это учит гуглить и разбираться самому в вопросе.",
+		date : "25.12.2020",
+	},
+	{
+		name : "Григорий томатов",
+		rating : 4,
+		message : "Курс довольно хорош, бесплатен, есть задачи для решения. Но во второй половине мало практики, иногда объяснения очень непонятные, но это учит гуглить и разбираться самому в вопросе.",
+		date : "25.12.2020",
+	},
+	{
+		name : "Григорий томатов",
+		rating : 4,
+		message : "Курс довольно хорош, бесплатен, есть задачи для решения. Но во второй половине мало практики, иногда объяснения очень непонятные, но это учит гуглить и разбираться самому в вопросе.",
+		date : "25.12.2020",
+	},
+	{
+		name : "Григорий томатов",
+		rating : 4,
+		message : "Курс довольно хорош, бесплатен, есть задачи для решения. Но во второй половине мало практики, иногда объяснения очень непонятные, но это учит гуглить и разбираться самому в вопросе.",
+		date : "25.12.2020",
+	},
 	{
 		name : "Григорий томатов",
 		rating : 4,
@@ -34,14 +59,21 @@ const Comments: FC = () => {
 
 	const comments = data.map((comment) => 
 		<div className={s.CourseComment}>
-			<div className={s.CourseCommentAuthor}>
-				{comment.name}
+			<div className={s.commentAvatar}>
+				<img src={mockPic} alt="author"/>
 			</div>
-			<div className={s.CourseCommentRating}>
-				{comment.rating}
-			</div>
-			<div className={s.CourseCommentText}>
-				{comment.message}
+			<div className={s.commentBody}>
+				<div className={s.commentHeader}>
+					<div className={s.CourseCommentAuthor}>
+						{comment.name}
+					</div>
+					<div className={s.CourseCommentRating}>
+						{comment.rating}
+					</div>
+				</div>
+				<div className={s.CourseCommentText}>
+					{comment.message}
+				</div>
 			</div>
 			<div className={s.CourseCommentDate}>
 				{comment.date}
@@ -50,7 +82,7 @@ const Comments: FC = () => {
 	)
 
 	return (
-		<div className={s.Course}>
+		<div className={s.comments}>
 			{comments}
 		</div>
 	)

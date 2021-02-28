@@ -8,37 +8,37 @@ import CustomDropdown from '../../Common/Helpers/CustomDropdown';
 const mockData : CourseProgram = {
 	chapters : [
 		{
-			name : "Глава 1",
+			name : "Глава один",
 			link : "/course/11/chapter/1",
 			sections : [
 				{
-					name : "Раздел 1",
+					name : "Раздел один",
 					link : "/course/11/chapter/1/section/1",
 				},
 				{
-					name : "Раздел 2",
+					name : "Раздел два",
 					link : "/course/11/chapter/1/section/2",
 				},
 				{
-					name : "Раздел 3",
+					name : "Раздел три",
 					link : "/course/11/chapter/1/section/3",
 				},
 			]
 		},
 		{
-			name : "Глава 2",
+			name : "Глава два",
 			link : "/course/11/chapter/1",
 			sections : [
 				{
-					name : "Раздел 1",
+					name : "Раздел один",
 					link : "/course/11/chapter/1/section/1",
 				},
 				{
-					name : "Раздел 2",
+					name : "Раздел два",
 					link : "/course/11/chapter/1/section/2",
 				},
 				{
-					name : "Раздел 3",
+					name : "Раздел три",
 					link : "/course/11/chapter/1/section/3",
 				},
 			]

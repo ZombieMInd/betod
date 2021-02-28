@@ -36,5 +36,11 @@
 @mixin txtDesc {
     font-weight: 400;
     font-size: 14px;
-    line-height: 17px;
+    line-height: 17.07px;
+}
+
+@mixin txtNinja {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
 }

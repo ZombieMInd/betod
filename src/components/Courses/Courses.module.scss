@@ -80,33 +80,149 @@
 
 .course {
     @include content; 
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-
-    .body {
+    .header {
+        @include h2;
         margin-top: 112px;
-
-        .header {
-            @include h2;
-
-        }
-
-        .desc {
-            @include txtRegular;
-            margin: {
-                top: 40px;
-                bottom: 24px;
-            }
-        }
-
-        .enter {
-            @include button;
-            background-color: #AFF1CB;
-            margin-bottom: 80px;
-        }
+    }
+    
+    .body {
 
         
+        display: grid;
+        grid-template-columns: 75% 22.5%;
+        column-gap: 24px;
+        .main {
+            .desc {
+                @include txtRegular;
+                margin: {
+                    top: 40px;
+                    bottom: 24px;
+                }
+                height: 168px;
+
+                
+            }
+            & ::selection {
+                background: #ffb7b7;
+            }
+
+            .enter {
+                @include button;
+                background-color: #AFF1CB;
+                margin-bottom: 80px;
+            }
+            
+            .details {
+                padding-bottom: 24px;
+
+                .item {
+                    margin-bottom: 8px;
+                }
+            }
+
+            .switcher {
+                padding: {
+                    right: 87px
+                };
+            }
+
+            .comments {
+                margin-top: 40px;
+                
+                .CourseComment {
+                    position: relative;
+                    display: flex;
+
+                    margin: {
+                        bottom: 16px;
+                    };
+
+                    .commentBody {
+                        padding: {
+                            left: 23px;
+                            bottom: 24px;
+                        };
+                        min-width: calc(100% - 64px);
+
+                        .commentHeader {
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 16px;
+
+                            .CourseCommentAuthor {
+                                @include h6;
+                            }
+                            .CourseCommentRating {
+                                @include txtDesc;
+                            }
+                        }
+
+                        .CourseCommentText {
+                            @include txtRegular;
+                            padding: 8px;
+
+                            
+                            background-color: #F2F2F2;
+                        }
+                    }
+
+                    .CourseCommentDate {
+                        @include txtNinja;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                    }
+                }
+            }
+            
+        }
+        .right {
+            margin: {
+                top: 40px;
+            }
+
+            .pic {
+                margin: {
+                    bottom: 18px;
+                };
+                max-width: 100%;
+            }
+        }
     }
+
+    .CourseAuthors {
+        
+        .AuthorsHeader {
+            @include h6;
+            margin-bottom: 16px;
+        }
+
+        .CourseAuthor {
+            display: flex;
+
+            margin: {
+                bottom: 16px;
+            };
+
+            .CourseAuthorPic {
+                height: 75px;
+                width: 64px;
+                margin-right: 24px;
+            }
+
+            .CourseAuthorName {
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 14.6px;
+
+                .CourseAuthorNick {
+                    margin-top: 8px;
+                    @include txtNinja;
+                }
+            }
+        }
+    }
+    
 }
 
 .switcherBtns {

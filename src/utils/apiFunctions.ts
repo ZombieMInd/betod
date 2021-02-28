@@ -1,4 +1,4 @@
-import { apiURL, APIListParamsType } from '../api/api'
+import { apiURL } from '../api/api'
 import noUserImg from '../assets/img/avatar-placeholder.png'
 import noContentImg from '../assets/img/content-placeholder.png'
 // import { OrderEnum } from '../components/Common/Table/Table'

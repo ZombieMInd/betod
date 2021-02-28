@@ -90,3 +90,7 @@ export type UserType = {
 	name : string,
 	id : number,
 }
+
+export type UserProfile = {
+	name : string
+}

@@ -3,7 +3,7 @@ import s from './Courses.module.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import CoursePreview from './Preview';
 import { AppStateType, CourseData } from '../../types/types';
-import { userAPI } from '../../api/api';
+import { userAPI } from '../../api/UserApi';
 
 // moke 
 const courseList = [

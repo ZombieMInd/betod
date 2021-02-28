@@ -1,10 +1,11 @@
 import * as types from './types'
 import { MeType } from '../../types/me'
-import { userAPI, setTokenForAPI } from '../../api/api'
+import { userAPI } from '../../api/UserApi'
 import { AxiosResponse } from 'axios'
 import Cookies from 'js-cookie'
 import { EmptyFuncType, AlertifyStatusEnum } from '../../types/types'
 import { showAlert } from '../../utils/showAlert'
+import { setTokenForAPI } from '../../api/api'
 
 
 
@@ -72,17 +73,6 @@ export const logout = (): types.ThunksType => async (dispatch) => {
 	dispatch(setAccessToken(""))
 	dispatch(setUserInfo({} as MeType))
 	Cookies.remove('access-token')
-}
-
-export const getUserInfo = (): types.ThunksType => async (dispatch) => {
-	let response = await userAPI.getUserInfo() as AxiosResponse
-
-
-	if (response && response.status === 200) {
-		dispatch(setUserInfo(response.data))
-	} else {
-		dispatch(logout())
-	}
 }
 
 export const editProfile = (profile: MeType, submitFunc: EmptyFuncType): types.ThunksType => async (dispatch) => {

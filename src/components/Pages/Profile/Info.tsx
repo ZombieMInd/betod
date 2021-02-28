@@ -9,8 +9,8 @@ import Course from '../../Courses/Course';
 import ContentSwitcher from '../../Common/Helpers/ContentSwitcher';
 import Search from '../../Search/Search';
 import { Link, Redirect } from 'react-router-dom';
-import { userAPI } from '../../../api/api';
 import { logout } from '../../../redux/me/actions';
+import withStyles, { WithStylesProps } from 'react-jss';
 
 const moke : ProfileMini = {
 	name : "Александра Константинопольская",
@@ -23,7 +23,20 @@ const moke : ProfileMini = {
 	},
 } 
 
-const Info: FC = () => {
+const styles = {
+	button: {
+	  backgroundColor: 'yellow'
+	},
+	label: {
+	  fontWeight: 'bold'
+	}
+}
+
+interface IProps extends WithStylesProps<typeof styles> {
+	
+}
+
+const Info: FC<IProps> = ({classes}) => {
 	const dispatch = useDispatch();
 	const data = moke; 
 
@@ -59,7 +72,7 @@ const Info: FC = () => {
 	)
 }
 
-export default Info;
+export default withStyles(styles)(Info);
 
 interface StatisticsProps {
 	statistic : ProfileStatistics

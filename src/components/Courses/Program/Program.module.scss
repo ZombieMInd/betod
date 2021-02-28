@@ -3,7 +3,10 @@
 @import '../../../assets/scss/Buttons.scss';
 
 .program {
-    margin-top: 34px;
+    margin: {
+        top: 34px;
+        bottom: 80px;
+    }
 
     .chapter {
         margin-bottom: 16px;
@@ -26,12 +29,12 @@
                 &::before {
                     content: counter(my-awesome-counter) ". ";
                     position: absolute;
-                    left: -5px;
+                    left: -0px;
                 }
             }
 
             .section {
-                padding-left: 8px;
+                padding-left: 16px;
                 @include txtDesc;
             }
         }

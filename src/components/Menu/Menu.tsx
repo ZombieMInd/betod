@@ -18,8 +18,6 @@ const Menu: FC = () => {
 	let btns : JSX.Element;
 	if (logged) {
 		btns = <>
-			<button className={s.loginBtn} onClick={authorClick}>автор</button>
-			<button className={s.loginBtn} onClick={studentClick}>студент</button>
 			<Avatar/>
 		</>;
 	} else {

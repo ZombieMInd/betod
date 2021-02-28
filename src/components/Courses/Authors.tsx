@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import s from './Courses.module.scss'
 import { useDispatch } from 'react-redux';
 import { CourseAuthor, CourseStatistic } from '../../types/types';
+import mockPic from '../../assets/img/ava.png';
 
 const mockData : CourseAuthor[] = [
 	{
@@ -33,19 +34,20 @@ const Authors: FC = () => {
 	const authors = data.map((author) => 
 		<div className={s.CourseAuthor}>
 			<div className={s.CourseAuthorPic}>
-				<img src={author.pic} alt="author"/>
+				<img src={mockPic} alt="author"/>
 			</div>
 			<div className={s.CourseAuthorName}>
 				{author.name}
-			</div>
-			<div className={s.CourseAuthorNick}>
-				{author.nickname}
+				<div className={s.CourseAuthorNick}>
+					{author.nickname}
+				</div>
 			</div>
 		</div>
 	)
 
 	return (
 		<div className={s.CourseAuthors}>
+			<div className={s.AuthorsHeader}>Преподаватели курса</div>
 			{authors}
 		</div>
 	)
