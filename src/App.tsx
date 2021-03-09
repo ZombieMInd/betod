@@ -13,6 +13,7 @@ import Footer from './components/Menu/Footer';
 import Course from './components/Courses/Course';
 import LoginPage from './components/Pages/Login/Page';
 import Profile from './components/Pages/Profile/Profile';
+import { Chat } from './components/Chat/Chat';
 // import NotFound from './components/NotFound/NotFound';
 // import Login from './components/Login/Login';
 // import Header from './components/Header/Header'
@@ -36,6 +37,7 @@ const App = ({ ...props }) => {
         <>
         <Menu/>
         <Switch>
+            <Route path="/chat" component={Chat}/>
             <Route path="/login" component={LoginPage}/>
             <Route path="/profile" component={Profile}/>
             <Route path="/course/:id" component={Course}/>
