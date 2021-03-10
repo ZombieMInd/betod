@@ -19,4 +19,148 @@
     padding: {
         top: 100px;
     }
+    .pageWrapper {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        column-gap: 112px;
+
+        .main {
+            margin: {
+                top: 32px;
+            };
+
+            .dropName {
+                @include h5;
+            }
+
+            .actions {
+                padding-top: 16px;
+                margin-bottom: 70px;
+
+                .action {
+                    padding: {
+                        bottom: 24px;
+                        top: 8px;
+                        left: 24px;
+                        right: 8px;
+                    };
+                    font-size: 18px;
+                    line-height: 21.94px;
+                    font-weight: 400;
+                    position: relative;
+                    border-bottom: 1px solid #BDBDBD;
+
+                    &:last-of-type {
+                        border-bottom: 0;
+                    }
+
+                    .initiator {
+                        &.update {
+                            color: #F2994A;
+                        }
+                        &.task {
+                            color: #219696;
+                        }
+                        &.request {
+                            color: #219653;
+                        }
+                    }
+
+                    .course {
+                        font-weight: 500;
+                    }
+
+                    svg {
+                        position: absolute;
+                        top: calc(50% - 16px);
+                        left: 0;
+                    }
+                    
+                }
+            }
+        }
+        .miniProfile {
+
+            .profilePic {
+                max-width: 218px;
+                overflow: hidden;
+            }
+
+            .body {
+                margin-top: 40px;
+
+                .name {
+                    position: relative;
+                    padding-right: 16px;
+
+                    svg {
+                        position: absolute;
+                        right: 0;
+                        top: 4px;
+                    }
+
+                    .full {
+                        @include h6;
+                    }
+                    .tag {
+                        margin-top: 8px;
+                        @include txtDesc;
+                    }
+                }
+
+                .bio {
+                    @include txtRegular;
+                    margin-top: 40px;
+                    position: relative;
+                    padding-right: 16px;
+
+                    svg {
+                        position: absolute;
+                        right: 0;
+                        top: 4px;
+                    }
+                }
+
+                .statistic {
+                    margin-top: 16px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .item {
+                        text-align: center;
+                        .statDesc {
+                            font-weight: 400;
+                            font-size: 12px;
+                            line-height: 14.63px;
+                            margin-bottom: 16px;
+                        }
+
+                        .value {
+                            @include h2;
+                        }
+                    }
+                }
+
+                .controls {
+                    margin-top: 56px;
+
+                    .controlItem {
+                        @include txtDesc;
+                        display: block;
+                        margin-bottom: 12px;
+                        padding-left: 24px;
+                        position: relative;
+
+                        svg {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
 }

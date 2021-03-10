@@ -14,6 +14,7 @@ import Course from './components/Courses/Course';
 import LoginPage from './components/Pages/Login/Page';
 import Profile from './components/Pages/Profile/Profile';
 import { Chat } from './components/Chat/Chat';
+import { MeType } from './types/me';
 // import NotFound from './components/NotFound/NotFound';
 // import Login from './components/Login/Login';
 // import Header from './components/Header/Header'
@@ -22,10 +23,10 @@ import { Chat } from './components/Chat/Chat';
 
 const App = ({ ...props }) => {
     const dispatch = useDispatch()
-    const logged = useSelector<AppStateType, boolean>(state => state.me.logged)
+    const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo)
 
     useLayoutEffect(() => {
-        dispatch(authUser())
+        dispatch(authUser(userInfo))
     }, []);
     useEffect(() => {
         document.title = "Betod"

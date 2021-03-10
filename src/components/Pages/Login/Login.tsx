@@ -6,10 +6,12 @@ import s from './Login.module.scss';
 import { Link, useHistory } from "react-router-dom"
 import { Formik, Form } from 'formik';
 import * as yup from "yup";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../../redux/me/actions';
 import { LoginInput } from './LoginInput';
 import { CustomField } from '../../Common/FormComponents/FormComponents';
+import { AppStateType } from '../../../types/types';
+import { MeType } from '../../../types/me';
 
 type LoginValuesType = {
 	login: string

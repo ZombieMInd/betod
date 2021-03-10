@@ -3,7 +3,7 @@ import { MeType } from '../../types/me'
 import { userAPI } from '../../api/UserApi'
 import { AxiosResponse } from 'axios'
 import Cookies from 'js-cookie'
-import { EmptyFuncType, AlertifyStatusEnum } from '../../types/types'
+import { EmptyFuncType, AlertifyStatusEnum, AppStateType } from '../../types/types'
 import { showAlert } from '../../utils/showAlert'
 import { setTokenForAPI } from '../../api/api'
 
@@ -45,25 +45,24 @@ export const login = (login: string, password: string, errorFunc: (message: stri
 	if (response) {
 		if (response.status === 200) {
 			Cookies.set('access-token', response.data.token, { expires: 14 });
-			await dispatch(authUser());
 			const userInfo = {
 				id : response.data.userid,
 				name : response.data.username,
 			}
-			await dispatch(setUserInfo(userInfo));
+			await dispatch(authUser(userInfo));
 		} else {
 			errorFunc('Неверный логин или пароль');
 		}
 	}
 }
 
-export const authUser = (): types.ThunksType => async (dispatch) => {
+export const authUser = (userInfo : MeType): types.ThunksType => async (dispatch) => {
 	let token = Cookies.get('access-token');
 
 	if (token) {
 		dispatch(setAccessToken(token))
 		dispatch(setLogged(true))
-
+		dispatch(setUserInfo(userInfo));
 		// dispatch(getUserInfo())
 	}
 }

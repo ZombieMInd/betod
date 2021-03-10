@@ -10,7 +10,7 @@ import Search from '../../Search/Search';
 import Main from '../Main/Main';
 import ProfileMain from './Main';
 import CourseUser from '../../Courses/User';
-import CourseList from '../../Courses/List';
+import CourseList from '../../Courses/List/List';
 
 const Profile: FC = () => {
 	const dispatch = useDispatch()

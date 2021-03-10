@@ -12,14 +12,19 @@ import Info from './Info';
 import CourseLast from '../../Courses/Last';
 import { Dropdown } from '../../Common/FormComponents/Components/DropDown';
 import CustomDropdown from '../../Common/Helpers/CustomDropdown';
-import CourseList from '../../Courses/List';
+import CourseList from '../../Courses/List/List';
 
 const ProfileMain: FC = () => {
 	
 	return (
-		<div className={s.contentWrapper}>
-			<CustomDropdown header="Последние действия"><Actions/></CustomDropdown>
-			<CustomDropdown header="Последние курсы"><CourseList/></CustomDropdown>
+		<div className={s.pageWrapper}>
+			<div className={s.main}>
+				<div style={{marginBottom: "16px 0 0 0"}}>
+					<CustomDropdown header={<div className={s.dropName}>Последние действия</div>}><Actions/></CustomDropdown>
+				</div>
+				<CustomDropdown header={<div className={s.dropName}>Последние курсы</div>}><CourseList/></CustomDropdown>
+			</div>
+			
 			<Info/>
 		</div>
 	)
