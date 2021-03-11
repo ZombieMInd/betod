@@ -31,6 +31,13 @@ export type CourseData = {
 	pic : string,
 }
 
+export type ProblemData = {
+	id : number,
+	problemName : string,
+	problemText : string,
+	problemTime : number,
+}
+
 export type UserComment = {
 	name : string,
 	rating : number,

@@ -13,7 +13,7 @@ const mockData : CourseProgram = {
 			sections : [
 				{
 					name : "Раздел один",
-					link : "/course/11/chapter/1/section/1",
+					link : "/course/11/problem/2",
 				},
 				{
 					name : "Раздел два",

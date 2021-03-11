@@ -51,8 +51,10 @@ const CustomDropdown: FC<Props> = ({header, children} ) => {
 
 	return (
 		<div className={s.dropdown}>
-			<div className={s.header} onClick={handleClick}>
-				{header} {headerTri()}
+			<div className={s.wrapper}>
+				<div className={s.header} onClick={handleClick}>
+					{header} {headerTri()}
+				</div>
 			</div>
 			<div className={isActive()}>
 				{children}

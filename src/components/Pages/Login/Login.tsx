@@ -12,6 +12,8 @@ import { LoginInput } from './LoginInput';
 import { CustomField } from '../../Common/FormComponents/FormComponents';
 import { AppStateType } from '../../../types/types';
 import { MeType } from '../../../types/me';
+import store from '../../../redux/redux-store';
+
 
 type LoginValuesType = {
 	login: string
@@ -29,9 +31,11 @@ const Login: FC = () => {
 	const [err, setError] = useState('')
 
 	const handleSubmit = async (dataObj: LoginValuesType, setSubmitting: (val: boolean) => void) => {
+		console.log(store.getState());
 		setSubmitting(true);
 		await dispatch(login(dataObj.login, dataObj.password, setError))
 		setSubmitting(false);
+		console.log(store.getState());
 	}
 
 	return (

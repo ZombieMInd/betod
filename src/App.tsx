@@ -15,6 +15,7 @@ import LoginPage from './components/Pages/Login/Page';
 import Profile from './components/Pages/Profile/Profile';
 import { Chat } from './components/Chat/Chat';
 import { MeType } from './types/me';
+import Problem from './components/Courses/Problem/Problem';
 // import NotFound from './components/NotFound/NotFound';
 // import Login from './components/Login/Login';
 // import Header from './components/Header/Header'
@@ -41,6 +42,7 @@ const App = ({ ...props }) => {
             <Route path="/chat" component={Chat}/>
             <Route path="/login" component={LoginPage}/>
             <Route path="/profile" component={Profile}/>
+            <Route path="/course/:courseid/problem/:id" component={Problem}/>
             <Route path="/course/:id" component={Course}/>
             <Route path="/" component={Main}/>
         </Switch>
