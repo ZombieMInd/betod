@@ -11,6 +11,7 @@ import Main from '../Main/Main';
 import ProfileMain from './Main';
 import CourseUser from '../../Courses/User';
 import CourseList from '../../Courses/List/List';
+import { Chat } from '../../Chat/Chat';
 
 const Profile: FC = () => {
 	const dispatch = useDispatch()
@@ -22,6 +23,10 @@ const Profile: FC = () => {
 		{
 			name : "Мои курсы",
 			content: <CourseList/>
+		},
+		{
+			name : "Чат",
+			content: <Chat/>
 		},
 	];
 	return (

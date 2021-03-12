@@ -102,7 +102,3 @@ export type UserProfile = {
 	name : string
 }
 
-export type ChatMessage = {
-	data : string,
-	sender : string | null,
-}
