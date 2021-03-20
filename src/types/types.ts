@@ -99,6 +99,16 @@ export type UserType = {
 }
 
 export type UserProfile = {
-	name : string
+	firstName : string,
+	lastName : string,
+	userName : string,
 }
 
+export type RegisterValuesType = {
+	firstName : string,
+	lastName : string,
+	userName : string,
+	password : string,
+	passwordConfirm : string,
+	recordBookNumber : string,
+}

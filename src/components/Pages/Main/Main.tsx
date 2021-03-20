@@ -7,6 +7,7 @@ import Login from '../Login/Login';
 import Course from '../../Courses/Course';
 import ContentSwitcher from '../../Common/Helpers/ContentSwitcher';
 import Search from '../../Search/Search';
+import SearchMain from '../../Search/Search';
 
 const Main: FC = () => {
 	const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const Main: FC = () => {
 	];
 	return (
 		<div className={s.contentWrapper}>
-			<Search/>
+			<SearchMain/>
 			<ContentSwitcher contents={content}/>
 		</div>
 	)

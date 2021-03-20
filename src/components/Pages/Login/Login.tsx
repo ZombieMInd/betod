@@ -20,7 +20,8 @@ type LoginValuesType = {
 	password: string
 }
 const Login: FC = () => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const validationSchema = yup.object({
 		// login: yup.string().required('Обязательное поле'),
@@ -31,11 +32,10 @@ const Login: FC = () => {
 	const [err, setError] = useState('')
 
 	const handleSubmit = async (dataObj: LoginValuesType, setSubmitting: (val: boolean) => void) => {
-		console.log(store.getState());
 		setSubmitting(true);
 		await dispatch(login(dataObj.login, dataObj.password, setError))
 		setSubmitting(false);
-		console.log(store.getState());
+		history.push("/profile");
 	}
 
 	return (

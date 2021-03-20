@@ -9,13 +9,14 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../../redux/me/actions';
 import { LoginInput } from './LoginInput';
 import { CustomField } from '../../Common/FormComponents/FormComponents';
+import { userAPI } from '../../../api/UserApi';
+import { RegisterValuesType } from '../../../types/types';
 
-type LoginValuesType = {
-	login: string
-	password: string
-}
+
 const Registration: FC = () => {
 	const dispatch = useDispatch()
+	const history = useHistory();
+
 
 	const validationSchema = yup.object({
 		// login: yup.string().required('Обязательное поле'),
@@ -25,10 +26,12 @@ const Registration: FC = () => {
 
 	const [err, setError] = useState('')
 
-	const handleSubmit = async (dataObj: LoginValuesType, setSubmitting: (val: boolean) => void) => {
+	const handleSubmit = async (dataObj: RegisterValuesType, setSubmitting: (val: boolean) => void) => {
 		setSubmitting(true);
-		await dispatch(login(dataObj.login, dataObj.password, setError))
+		const res = await userAPI.regUser(dataObj);
 		setSubmitting(false);
+		console.log(res);
+		history.push("/");
 	}
 
 	return (
@@ -36,7 +39,14 @@ const Registration: FC = () => {
 			<Formik
 				
 				validateOnChange={true}
-				initialValues={{ login: '', password: '' }}
+				initialValues={{ 
+					userName: '',
+					password: '',
+					passwordConfirm: '',
+					lastName: '',
+					firstName: '',
+					recordBookNumber: '',
+				}}
 				validationSchema={validationSchema}
 				enableReinitialize={true}
 				onSubmit={(data, { setSubmitting }) => {
@@ -46,12 +56,32 @@ const Registration: FC = () => {
 				{({ isSubmitting }) => (
 					<Form className={s.loginForm}>
 						<CustomField
-							name="login"
-							placeholder="Логин"
+							name="lastName"
+							placeholder="Фамилия"
 							Component={LoginInput}
 							className={s.loginInputWrapper}
 						/>
 						
+						<CustomField
+							name="firstName"
+							placeholder="Имя"
+							Component={LoginInput}
+							className={s.loginInputWrapper}
+						/>
+						<CustomField
+							name="recordBookNumber"
+							placeholder="Номер студенческого билета"
+							Component={LoginInput}
+							className={s.loginInputWrapper}
+						/>
+
+						<CustomField
+							name="userName"
+							placeholder="Ник"
+							Component={LoginInput}
+							className={s.loginInputWrapper}
+						/>
+
 						<CustomField
 							name="password"
 							placeholder="Пароль"
@@ -59,6 +89,15 @@ const Registration: FC = () => {
 							type="password"
 							className={s.loginInputWrapper}
 						/>
+
+						<CustomField
+							name="passwordConfirm"
+							placeholder="Повтор пароль"
+							Component={LoginInput}
+							type="password"
+							className={s.loginInputWrapper}
+						/>
+						
 						<div className={s.footer}>
 							<div className={s.remember}></div>
 							<button className={s.loginBtn} disabled={isSubmitting}>Далее</button>

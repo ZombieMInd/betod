@@ -25,6 +25,7 @@ import Problem from './components/Courses/Problem/Problem';
 const App = ({ ...props }) => {
     const dispatch = useDispatch()
     const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo)
+    const logged = useSelector<AppStateType, boolean>(state => state.me.logged)
 
     useLayoutEffect(() => {
         dispatch(authUser(userInfo))
@@ -41,8 +42,14 @@ const App = ({ ...props }) => {
         <Switch>
             <Route path="/chat" component={Chat}/>
             <Route path="/login" component={LoginPage}/>
+            {/* {logged && (
+                <>
+                
+                </>
+            )} */}
             <Route path="/profile" component={Profile}/>
             <Route path="/course/:courseid/problem/:id" component={Problem}/>
+            
             <Route path="/course/:id" component={Course}/>
             <Route path="/" component={Main}/>
         </Switch>
