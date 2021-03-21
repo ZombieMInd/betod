@@ -1,0 +1,48 @@
+@import '../../assets/scss/Colors.scss';
+@import '../../assets/scss/CommonStyle.scss';
+@import '../../assets/scss/Buttons.scss';
+
+.search {
+    display: flex;
+    margin-left: 92px;
+    margin-bottom: 64px;
+
+    .pic {
+        width: 56px;
+        img {
+            width: 100%;
+        }
+    }
+
+    .main {
+        margin-left: 28px;
+        .text {
+            margin-bottom: 20px;
+
+            .title {
+                @include h6
+            }
+            .subtitle {
+                @include txtDesc
+            }
+        }
+
+        .form {
+            position: relative;
+            .input {
+                width: 504px;
+                border: 1px solid #4F4F4F;
+                padding: 7px 25px 8px 37px;
+            }
+            .button {
+                @include button;
+                margin-left: 24px;
+            }
+            .searchIcon {
+                position: absolute;
+                left: 13px;
+                top: 7px;
+            }
+        }
+    }
+}

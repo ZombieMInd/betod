@@ -14,6 +14,18 @@
     }
 }
 
+.pencil {
+    cursor: pointer;
+
+    &:hover {
+        svg {
+            path {
+                fill: #000;
+            }
+        }
+    }
+}
+
 .contentWrapper {
     @include content;
     padding: {
@@ -84,6 +96,10 @@
             .profilePic {
                 max-width: 218px;
                 overflow: hidden;
+
+                img {
+                    width: 100%;
+                }
             }
 
             .body {
@@ -150,6 +166,10 @@
                         margin-bottom: 12px;
                         padding-left: 24px;
                         position: relative;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
 
                         svg {
                             position: absolute;

@@ -28,14 +28,18 @@ const App = ({ ...props }) => {
     const logged = useSelector<AppStateType, boolean>(state => state.me.logged)
 
     useLayoutEffect(() => {
-        dispatch(authUser(userInfo))
+        dispatch(authUser());
+        console.log(userInfo);
     }, []);
+    
     useEffect(() => {
-        document.title = "Betod"
+        document.title = "Betod";
      }, []);
-    // if (!logged) {
-    //     return <Login />
-    // }
+
+    if (!logged) {
+        return <LoginPage/>
+    }
+
     return (
         <>
         <Menu/>

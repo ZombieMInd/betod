@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react'
 import s from './Profile.module.scss';
 import pic from '../../../assets/img/Profile.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CourseGrid from '../../Courses/Grid';
-import { ProfileMini, ProfileStatistics, SwitcherProps } from '../../../types/types';
+import { AppStateType, ProfileMini, ProfileStatistics, SwitcherProps } from '../../../types/types';
 import Login from '../Login/Login';
 import Course from '../../Courses/Course';
 import ContentSwitcher from '../../Common/Helpers/ContentSwitcher';
@@ -11,6 +11,7 @@ import Search from '../../Search/Search';
 import { Link, Redirect } from 'react-router-dom';
 import { logout } from '../../../redux/me/actions';
 import withStyles, { WithStylesProps } from 'react-jss';
+import { MeType } from '../../../types/me';
 
 const moke : ProfileMini = {
 	name : "Александра Константинопольская",
@@ -38,6 +39,7 @@ interface IProps extends WithStylesProps<typeof styles> {
 
 const Info: FC<IProps> = ({classes}) => {
 	const dispatch = useDispatch();
+	const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo);
 	const data = moke; 
 
 	const logOut = () => {
@@ -46,29 +48,31 @@ const Info: FC<IProps> = ({classes}) => {
 
 	const pencil = () => {
 		return (
-			<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path fill-rule="evenodd" clip-rule="evenodd" d="M10.6202 0.246422C10.4249 0.05116 10.1083 0.05116 9.91309 0.246422L1.98118 8.17833C1.89122 8.26829 1.81925 8.37459 1.76914 8.49152L0.207068 12.1363C0.12653 12.3243 0.168518 12.5423 0.313087 12.6869C0.457657 12.8314 0.675679 12.8734 0.8636 12.7929L4.50843 11.2308C4.62536 11.1807 4.73166 11.1087 4.82162 11.0188L12.7535 3.08686C12.8473 2.99309 12.9 2.86592 12.9 2.73331C12.9 2.6007 12.8473 2.47352 12.7535 2.37976L10.6202 0.246422ZM2.68828 8.88544L10.2666 1.30708L11.6929 2.73331L4.11451 10.3117L2.52586 10.9925L2.00743 10.4741L2.68828 8.88544Z" fill="#828282"/>
-			</svg>
+			<div className={s.pencil}>
+				<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M10.6202 0.246422C10.4249 0.05116 10.1083 0.05116 9.91309 0.246422L1.98118 8.17833C1.89122 8.26829 1.81925 8.37459 1.76914 8.49152L0.207068 12.1363C0.12653 12.3243 0.168518 12.5423 0.313087 12.6869C0.457657 12.8314 0.675679 12.8734 0.8636 12.7929L4.50843 11.2308C4.62536 11.1807 4.73166 11.1087 4.82162 11.0188L12.7535 3.08686C12.8473 2.99309 12.9 2.86592 12.9 2.73331C12.9 2.6007 12.8473 2.47352 12.7535 2.37976L10.6202 0.246422ZM2.68828 8.88544L10.2666 1.30708L11.6929 2.73331L4.11451 10.3117L2.52586 10.9925L2.00743 10.4741L2.68828 8.88544Z" fill="#828282"/>
+				</svg>
+			</div>
 		)
 	}
 
 	return (
 		<div className={s.miniProfile}>
 			<div className={s.profilePic}>
-				<img src={pic}/>
+				<img src={userInfo.userPicture ? userInfo.userPicture : pic}/>
 			</div>
 			<div className={s.body}>
 				<div className={s.name}>
 					<div className={s.full}>
-						{data.name}
+						{userInfo.lastName + " " + userInfo.firstName}
 						{pencil()}
 					</div>
 					<div className={s.tag}>
-						{data.tag}
+						{userInfo.username}
 					</div>
 				</div>
 				<div className={s.bio}>
-					{data.bio}
+					{userInfo.userDescription}
 					{pencil()}
 				</div>
 				<InfoStatistic statistic={data.statistic}/>

@@ -1,5 +1,5 @@
 import * as types from './types'
-import { MeType } from '../../types/me'
+import { LoginMe, MeType } from '../../types/me'
 import { userAPI } from '../../api/UserApi'
 import { AxiosResponse } from 'axios'
 import Cookies from 'js-cookie'
@@ -45,27 +45,41 @@ export const login = (login: string, password: string, errorFunc: (message: stri
 	if (response) {
 		if (response.status === 200) {
 			Cookies.set('access-token', response.data.token, { expires: 14 });
-			const userInfo = {
-				id : response.data.userid,
-				name : response.data.username,
-			}
-			await dispatch(authUser(userInfo));
+			await dispatch(authUser());
 		} else {
 			errorFunc('Неверный логин или пароль');
 		}
 	}
 }
 
-export const authUser = (userInfo : MeType): types.ThunksType => async (dispatch) => {
+export const authUser = (): types.ThunksType => async (dispatch) => {
 	let token = Cookies.get('access-token');
 
 	if (token) {
 		dispatch(setAccessToken(token))
 		dispatch(setLogged(true))
-		dispatch(setUserInfo(userInfo));
-		// dispatch(getUserInfo())
+		dispatch(getUserInfo())
 	}
 }
+
+export const getUserInfo = (): types.ThunksType => async (dispatch) => {
+	let response = await userAPI.getUserInfo() as AxiosResponse
+
+	if (response && response.status === 200) {
+		//https://mindcoat.site
+		console.log(response.data.user);
+		let pic : string;
+		if (response.data.user.userPicture){
+			pic = response.data.user.userPicture;
+			pic = 'https://mindcoat.site/files' + pic.slice(12, pic.length);
+			response.data.user.userPicture = pic;
+		}
+		dispatch(setUserInfo(response.data.user))
+	} else {
+		dispatch(logout())
+	}
+}
+
 
 export const logout = (): types.ThunksType => async (dispatch) => {
 	dispatch(setLogged(false))
@@ -78,6 +92,7 @@ export const editProfile = (profile: UserProfile, submitFunc: EmptyFuncType): ty
 	let response = await userAPI.editProfile(profile) as AxiosResponse
 
 	if (response && response.status === 200) {
+
 		dispatch(setUserInfo(response.data))
 		submitFunc()
 	}  else {
