@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import s from './Program.module.scss'
 import { useDispatch } from 'react-redux';
-import { CourseProgram, UserComment } from '../../../types/types';
+import { CourseProgram, ProblemData, UserComment } from '../../../types/types';
 import { Link } from 'react-router-dom';
 import CustomDropdown from '../../Common/Helpers/CustomDropdown';
+import { userAPI } from '../../../api/UserApi';
 
 const mockData : CourseProgram = {
 	chapters : [
@@ -46,31 +47,41 @@ const mockData : CourseProgram = {
 	],
 };
 
-const Program: FC = () => {
+const Program = ({id} : {id : number}) => {
 	const dispatch = useDispatch();
 
-	const data = mockData;
-	// const [data, setData] = useState<CourseData>();
+	
+
+	const [problems, setProblems] = useState<ProblemData[]>([]);
  
-	// useEffect( () => {
-	// 	async function asyncWrap() {
-	// 		// const result = await userAPI.getCourseDataById(id);
-	// 		setData(result?.data);
-	// 	};
-	// 	asyncWrap();
-	// }, []);
+	useEffect( () => {
+		async function asyncWrap() {
+			const allProblems = await userAPI.getAllProblemsFromCourse(id);
+			setProblems(allProblems?.data); 
+		};
+		asyncWrap();
+	}, []);
+
+	const data = {
+		chapters: [
+			{
+				name: "Задачи курса",
+				sections: problems,
+			}
+		]
+	};
 
 	const program = data.chapters.map((chapter) => 
 		<div className={s.chapter}>
 			<CustomDropdown header={
 				<div className={s.name}>
-					<Link to={chapter.link}>{chapter.name}</Link>
+					{chapter.name}
 				</div>
 				}>
 				<ol className={s.sections}>
-					{chapter.sections.map((section) => 
-						<li className={s.section}>
-							<Link to={section.link}>{section.name}</Link>
+					{chapter.sections.map((section, index) => 
+						<li className={s.section} key={index}>
+							<Link to={`/course/${id}/problem/${section.id}`}>{section.problemName}</Link>
 						</li>
 					)}
 				</ol>

@@ -3,9 +3,10 @@ import { LoginMe, MeType } from '../../types/me'
 import { userAPI } from '../../api/UserApi'
 import { AxiosResponse } from 'axios'
 import Cookies from 'js-cookie'
-import { EmptyFuncType, AlertifyStatusEnum, AppStateType, UserProfile } from '../../types/types'
+import { EmptyFuncType, AlertifyStatusEnum, AppStateType, UserProfile, UpdateProfile } from '../../types/types'
 import { showAlert } from '../../utils/showAlert'
 import { setTokenForAPI } from '../../api/api'
+import { StaticPathResolver } from '../../utils/staticPathResolver'
 
 
 
@@ -66,14 +67,11 @@ export const getUserInfo = (): types.ThunksType => async (dispatch) => {
 	let response = await userAPI.getUserInfo() as AxiosResponse
 
 	if (response && response.status === 200) {
-		//https://mindcoat.site
-		console.log(response.data.user);
 		let pic : string;
 		if (response.data.user.userPicture){
-			pic = response.data.user.userPicture;
-			pic = 'https://mindcoat.site/files' + pic.slice(12, pic.length);
-			response.data.user.userPicture = pic;
+			response.data.user.userPicture = StaticPathResolver(response.data.user.userPicture);
 		}
+		response.data.user.username = '@' + response.data.user.username;
 		dispatch(setUserInfo(response.data.user))
 	} else {
 		dispatch(logout())
@@ -88,7 +86,7 @@ export const logout = (): types.ThunksType => async (dispatch) => {
 	Cookies.remove('access-token')
 }
 
-export const editProfile = (profile: UserProfile, submitFunc: EmptyFuncType): types.ThunksType => async (dispatch) => {
+export const editProfile = (profile: UpdateProfile, submitFunc: EmptyFuncType): types.ThunksType => async (dispatch) => {
 	let response = await userAPI.editProfile(profile) as AxiosResponse
 
 	if (response && response.status === 200) {

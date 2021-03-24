@@ -28,7 +28,8 @@ export type CourseData = {
 	description : string,
 	problems : number[],
 	users : number[],
-	pic : string,
+	courseMainPictureUrl : string,
+	courseDuration : string,
 }
 
 export type ProblemData = {
@@ -111,4 +112,48 @@ export type RegisterValuesType = {
 	password : string,
 	passwordConfirm : string,
 	recordBookNumber : string,
+}
+
+export interface UpdateProfile {
+	id : number,
+	firstName? : string,
+	lastName? : string,
+	userName? : string,
+	userDescription? : string,
+}
+
+export interface addCourse {
+	courseName : string,
+	courseDescription? : string,
+	courseDuration? : string,
+	problems? : Array<number>,
+}
+
+export interface UpdateCourse {
+	id : number,
+	courseName? : string,
+	courseDescription? : string,
+	courseDuration? : string,
+	problems? : Array<number>,
+	courseAuthorsId? : Array<number>,
+}
+
+export interface addProblem {
+	problemName : string,
+	problemText? : string,
+	problemTime? : string,
+}
+
+export interface UpdateProblem {
+	id : number,
+	problemName? : string,
+	problemText? : string,
+	problemTime? : string,
+}
+
+
+export interface Solution {
+	userId : number,
+	problemId : string,
+	solutionText : string,
 }

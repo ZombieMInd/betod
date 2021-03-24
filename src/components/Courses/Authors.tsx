@@ -31,8 +31,8 @@ const Authors: FC = () => {
 	// 	asyncWrap();
 	// }, []);
 
-	const authors = data.map((author) => 
-		<div className={s.CourseAuthor}>
+	const authors = data.map((author, index) => 
+		<div className={s.CourseAuthor} key={index}>
 			<div className={s.CourseAuthorPic}>
 				<img src={mockPic} alt="author"/>
 			</div>

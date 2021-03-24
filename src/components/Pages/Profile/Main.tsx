@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react'
 import s from './Profile.module.scss'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CourseGrid from '../../Courses/Grid';
-import { SwitcherProps } from '../../../types/types';
+import { AppStateType, SwitcherProps } from '../../../types/types';
 import Login from '../Login/Login';
 import Course from '../../Courses/Course';
 import ContentSwitcher from '../../Common/Helpers/ContentSwitcher';
@@ -13,8 +13,13 @@ import CourseLast from '../../Courses/Last';
 import { Dropdown } from '../../Common/FormComponents/Components/DropDown';
 import CustomDropdown from '../../Common/Helpers/CustomDropdown';
 import CourseList from '../../Courses/List/List';
+import LoginPage from '../Login/Page';
 
 const ProfileMain: FC = () => {
+    const logged = useSelector<AppStateType, boolean>(state => state.me.logged)
+	if (!logged) {
+        return <LoginPage/>
+    }
 	
 	return (
 		<div className={s.pageWrapper}>

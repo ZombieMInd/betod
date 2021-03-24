@@ -36,8 +36,9 @@ const CourseGrid: FC = () => {
 
 	const gridItems = data?.map((course) => 
 		<CoursePreview 
+			key={course.id}
 			id={course.id}
-			pic={course.pic}
+			pic={course.courseMainPictureUrl}
 			name={course.courseName}
 			// description={course.description}
 			description="Имена авторов, какая-то ещё инфа"

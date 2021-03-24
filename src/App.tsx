@@ -24,12 +24,11 @@ import Problem from './components/Courses/Problem/Problem';
 
 const App = ({ ...props }) => {
     const dispatch = useDispatch()
-    const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo)
+    // const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo)
     const logged = useSelector<AppStateType, boolean>(state => state.me.logged)
 
     useLayoutEffect(() => {
         dispatch(authUser());
-        console.log(userInfo);
     }, []);
     
     useEffect(() => {

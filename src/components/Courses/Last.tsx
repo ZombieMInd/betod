@@ -34,9 +34,10 @@ const CourseLast: FC = () => {
 	}, []);
 
 	const gridItems = data?.map((course) => 
-		<CoursePreview 
+		<CoursePreview
+			key={course.id} 
 			id={course.id}
-			pic={course.pic}
+			pic={course.courseMainPictureUrl}
 			name={course.courseName}
 			description={course.description}
 		/>

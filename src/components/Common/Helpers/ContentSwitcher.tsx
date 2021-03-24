@@ -29,8 +29,8 @@ const ContentSwitcher: FC<Contents> = ({contents, style} : Contents) => {
 		}
 	}
 
-	const btns = data.map((btn) =>
-		<button className={isActive(btn)} onClick={() => handleClick(btn)}>{btn.name}</button>
+	const btns = data.map((btn, index) =>
+		<button key={index} className={isActive(btn)} onClick={() => handleClick(btn)}>{btn.name}</button>
 	);
 
 	useEffect( () => {

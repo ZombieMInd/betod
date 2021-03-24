@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react'
 import s from './Courses.module.scss'
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { CourseData, SwitcherProps } from '../../types/types';
+import { CourseData, ProblemData, SwitcherProps } from '../../types/types';
 // import { userAPI } from '../../api/UserApi';
 import Comments from './Comments';
 import Statistic from './Statistic';
@@ -11,6 +11,7 @@ import ContentSwitcher from '../Common/Helpers/ContentSwitcher';
 import Program from './Program/Program';
 import { userAPI } from '../../api/UserApi';
 import mockPic from '../../assets/img/course.png';
+import { StaticPathResolver } from '../../utils/staticPathResolver';
 
 const Course: FC = (props: any) => {
 	let { id } : any = useParams();
@@ -22,7 +23,13 @@ const Course: FC = (props: any) => {
 	useEffect( () => {
 		async function asyncWrap() {
 			const result = await userAPI.getCourseDataById(id);
-			setData(result?.data);
+			if (result) {
+				if (result.data.course.courseMainPictureUrl){
+					setData({...result.data.course, courseMainPictureUrl: StaticPathResolver(result.data.course.courseMainPictureUrl)});
+				} else {
+					setData(result.data.course);
+				}
+			}
 		};
 		asyncWrap();
 	}, []);
@@ -30,7 +37,7 @@ const Course: FC = (props: any) => {
 	const courseContents : SwitcherProps[] = [
 		{
 			name : "Программа курса",
-			content: <Program/>
+			content: <Program id={id}/>
 		},
 		{
 			name : "Отзывы",
@@ -41,7 +48,7 @@ const Course: FC = (props: any) => {
 	const detailData = [
 		{
 			name : "Длительность курса",
-			data : "110 ч"
+			data : data?.courseDuration
 		},
 		{
 			name : "Для кого",
@@ -56,8 +63,8 @@ const Course: FC = (props: any) => {
 			data : "24 урока, 7 часов видео, 30 тестов, 12 задач"
 		},
 	];
-	const details = detailData.map((item) =>
-		<div className={s.item}>
+	const details = detailData.map((item, index) =>
+		<div className={s.item} key={index}>
 			<span className={s.bold}>{item.name}:</span> {item.data}
 		</div>
 	)
@@ -67,7 +74,7 @@ const Course: FC = (props: any) => {
 			<div className={s.body}>
 				<div className={s.main}>
 					<div className={s.desc}>
-						<span className={s.bold}> Описание: </span>На классическом математическом анализе основывается современный анализ, который рассматривается как одно из трёх основных направлений математики.На классическом математическом анализе основывается современный анализ, который рассматривается как одно из трёх основных направлений математики.На классическом математическом анализе основывается современный анализ, который рассматривается как одно из трёх основных направлений математики
+						<span className={s.bold}> Описание: </span> {data?.description}
 					</div>
 					<div className={s.details}>
 						{details}
@@ -78,7 +85,7 @@ const Course: FC = (props: any) => {
 					</div>
 				</div>
 				<div className={s.right}>
-					<img className={s.pic} src={mockPic}/>
+					<img className={s.pic} src={data?.courseMainPictureUrl}/>
 					<Statistic/>
 					<Authors/>
 				</div>
