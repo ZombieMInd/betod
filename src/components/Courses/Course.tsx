@@ -1,8 +1,8 @@
 import React, { FC, useState, useEffect } from 'react'
 import s from './Courses.module.scss'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { CourseData, ProblemData, SwitcherProps } from '../../types/types';
+import { AppStateType, CourseData, ProblemData, SwitcherProps } from '../../types/types';
 // import { userAPI } from '../../api/UserApi';
 import Comments from './Comments';
 import Statistic from './Statistic';
@@ -12,15 +12,32 @@ import Program from './Program/Program';
 import { userAPI } from '../../api/UserApi';
 import mockPic from '../../assets/img/course.png';
 import { StaticPathResolver } from '../../utils/staticPathResolver';
+import { MeType } from '../../types/me';
 
 const Course: FC = (props: any) => {
 	let { id } : any = useParams();
 	const dispatch = useDispatch();
+	const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo);
 	// const data = getCourseData(id);
+	const [enrolled, setEnrolled] = useState<boolean>(false);
+
+	useEffect( () => {
+		if (userInfo.courses && userInfo.courses.includes(+id)) {
+			setEnrolled(true);
+		}
+	}, [userInfo]);
+
+	const handleEnroll = async () => {
+		const result = await userAPI.addUserToCourse(id, userInfo.id);
+		if (result) {
+			setEnrolled(true);
+		}
+	}
 
 	const [data, setData] = useState<CourseData>();
  
 	useEffect( () => {
+		console.log(userInfo.courses);
 		async function asyncWrap() {
 			const result = await userAPI.getCourseDataById(id);
 			if (result) {
@@ -79,7 +96,9 @@ const Course: FC = (props: any) => {
 					<div className={s.details}>
 						{details}
 					</div>
-					<button className={s.enter}>Поступить</button>
+					{!enrolled && 
+						<button className={s.enter} onClick={handleEnroll}>Поступить</button>
+					}
 					<div className={s.switcher}>
 						<ContentSwitcher contents={courseContents} style="space-between"/>
 					</div>
@@ -87,7 +106,9 @@ const Course: FC = (props: any) => {
 				<div className={s.right}>
 					<img className={s.pic} src={data?.courseMainPictureUrl}/>
 					<Statistic/>
-					<Authors/>
+					{data?.courseAuthorsId &&
+						<Authors ids={data.courseAuthorsId}/>
+					}
 				</div>
 			</div>
 			

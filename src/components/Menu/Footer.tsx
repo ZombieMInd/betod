@@ -7,7 +7,7 @@ const Footer: FC = () => {
 
 	return (
 		<div className={s.Footer}>
-			
+			<div className={s.Company}>© 2021 DAD co.</div>
 		</div>
 	)
 }

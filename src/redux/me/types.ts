@@ -5,7 +5,7 @@ import { MeType } from '../../types/me';
 import { actionTypes } from './actions'
 
 
-export type ActionsTypes = SetLoggedType  | SetUserInfo | SetTokenType;
+export type ActionsTypes = SetLoggedType  | SetUserInfo | SetTokenType | SetUserCourses;
 export type ThunksType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
 
@@ -21,4 +21,8 @@ export type SetTokenType = {
 export type SetUserInfo = {
 	type: typeof actionTypes.SET_USER_INFO,
 	userInfo: MeType
+}
+export type SetUserCourses = {
+	type: typeof actionTypes.SET_USER_COURSES,
+	userCourses: Array<number>
 }

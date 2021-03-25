@@ -14,6 +14,7 @@ export enum actionTypes {
 	SET_LOGGED = 'me/SET_LOGGED',
 	SET_TOKEN = 'me/SET_TOKEN',
 	SET_USER_INFO = 'me/SET_USER_INFO',
+	SET_USER_COURSES = 'me/SET_USER_COURSES',
 }
 
 
@@ -28,6 +29,12 @@ export const setUserInfo = (userInfo: MeType): types.SetUserInfo => {
 	return {
 		type: actionTypes.SET_USER_INFO,
 		userInfo
+	}
+}
+export const setUserCourses = (userCourses: Array<number>): types.SetUserCourses => {
+	return {
+		type: actionTypes.SET_USER_COURSES,
+		userCourses
 	}
 }
 const setTokenSuccess = (token: string): types.SetTokenType => {
@@ -71,8 +78,19 @@ export const getUserInfo = (): types.ThunksType => async (dispatch) => {
 		if (response.data.user.userPicture){
 			response.data.user.userPicture = StaticPathResolver(response.data.user.userPicture);
 		}
-		response.data.user.username = '@' + response.data.user.username;
-		dispatch(setUserInfo(response.data.user))
+		// response.data.user.username = response.data.user.username;
+		
+		const userCourses : Array<number> = [];
+		for (const course of response.data.userCourses) {
+			userCourses.push(course.id);
+		}
+		
+		if (userCourses.length > 0) {
+			// console.log("Courses ", userCourses);
+			// dispatch(setUserCourses(userCourses));
+		}
+		dispatch(setUserInfo({...response.data.user, courses : userCourses}));
+			
 	} else {
 		dispatch(logout())
 	}
@@ -91,7 +109,7 @@ export const editProfile = (profile: UpdateProfile, submitFunc: EmptyFuncType): 
 
 	if (response && response.status === 200) {
 
-		dispatch(setUserInfo(response.data))
+		dispatch(setUserInfo(response.data.user))
 		submitFunc()
 	}  else {
 		showAlert(AlertifyStatusEnum.success, "Не удалось изменить профиль")

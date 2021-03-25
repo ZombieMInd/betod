@@ -27,7 +27,7 @@ const ProfileMain: FC = () => {
 				<div style={{marginBottom: "16px 0 0 0"}}>
 					<CustomDropdown header={<div className={s.dropName}>Последние действия</div>}><Actions/></CustomDropdown>
 				</div>
-				<CustomDropdown header={<div className={s.dropName}>Последние курсы</div>}><CourseList/></CustomDropdown>
+				<CustomDropdown header={<div className={s.dropName}>Последние курсы</div>}><CourseList limit={3}/></CustomDropdown>
 			</div>
 			
 			<Info/>

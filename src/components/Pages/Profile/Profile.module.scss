@@ -7,6 +7,13 @@
     width: 32px;
     overflow: hidden;
 
+    &:hover {
+        box-shadow: 4px 4px 0px #151313;
+    }
+    &:active {
+        box-shadow: 2px 2px 0px #151313;
+    }
+
     img {
         height: 100%;
         width: 100%;

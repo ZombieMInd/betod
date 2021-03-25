@@ -19,7 +19,7 @@ export type CoursePreviewData = {
 	id : number,
 	name : string,
 	description : string,
-	pic : string,
+	pic : string | null,
 }
 
 export type CourseData = {
@@ -30,6 +30,7 @@ export type CourseData = {
 	users : number[],
 	courseMainPictureUrl : string,
 	courseDuration : string,
+	courseAuthorsId : Array<number>,
 }
 
 export type ProblemData = {
@@ -53,9 +54,10 @@ export type CourseStatistic = {
 }
 
 export type CourseAuthor = {
-	name : string,
-	nickname : string,
-	pic : string,
+	firstName : string,
+	userName : string,
+	lastName : string,
+	userPicture : string,
 }
 
 export type SwitcherProps = {

@@ -10,5 +10,6 @@ export type MeType = {
     firstName: string
     lastName: string
     recordBookNumber: number
-    userDescription: string
+    userDescription: string,
+    courses: Array<number>,
 }

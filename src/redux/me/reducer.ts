@@ -5,7 +5,8 @@ import { MeType } from '../../types/me'
 let initialState = {
 	logged: false,
 	token: "",
-	userInfo: {} as MeType,	
+	userInfo: {} as MeType,
+	userCourses : [] as Array<number>,
 }
 
 
@@ -27,6 +28,12 @@ const meReducer = (state = initialState, action: types.ActionsTypes): typeof ini
 			return {
 				...state,
 				userInfo: {...action.userInfo}
+			}
+		}
+		case actionTypes.SET_USER_COURSES: {
+			return {
+				...state,
+				userCourses: {...action.userCourses}
 			}
 		}
 		

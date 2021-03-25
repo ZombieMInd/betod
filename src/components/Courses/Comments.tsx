@@ -57,8 +57,8 @@ const Comments: FC = () => {
 	// 	asyncWrap();
 	// }, []);
 
-	const comments = data.map((comment) => 
-		<div className={s.CourseComment}>
+	const comments = data.map((comment, index) => 
+		<div className={s.CourseComment} key={index}>
 			<div className={s.commentAvatar}>
 				<img src={mockPic} alt="author"/>
 			</div>

@@ -4,4 +4,11 @@
     font-weight: 600;
     padding: 5px 24px;
     background-color: #BDBDBD;
+
+    &:hover {
+        box-shadow: 4px 4px 0px #151313;
+    }
+    &:active {
+        box-shadow: 2px 2px 0px #151313;
+    }
 }

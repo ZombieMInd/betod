@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { CoursePreviewData } from '../../types/types';
 import mockPic from '../../assets/img/book.png';
+import { StaticPathResolver } from '../../utils/staticPathResolver';
 
 export interface CoursePreviewProps {
 	id : number,
@@ -14,10 +15,16 @@ export interface CoursePreviewProps {
 
 const CoursePreview: FC<CoursePreviewData> = ({id, pic, name, description }) => {
 	const dispatch = useDispatch();
+	let picture;
+	if (!pic) {
+		picture = mockPic;
+	} else {
+		picture = StaticPathResolver(pic);
+	}
 	return (
 		<div className={s.preview}>
 			<Link to={"/course/" + id} className={s.wrapper}>
-				<div className={s.header} style={{backgroundImage: "url(" + mockPic + ")"}}>
+				<div className={s.header} style={{backgroundImage: `url(${picture})`}}>
 					{/* <img src={mockPic} alt="image" className={s.image}/> */}
 					<div className={s.name}>{name}</div>
 				</div>
