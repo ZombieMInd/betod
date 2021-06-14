@@ -1,0 +1,180 @@
+@import '../../assets/scss/Colors.scss';
+@import '../../assets/scss/CommonStyle.scss';
+
+@mixin dialog {
+    display: flex;
+    .dialogPic {
+        width: 40px;
+        height: 40px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    
+
+    .info {
+        margin-left: 16px;
+        .title {
+            font-size: 14px;
+            line-height: 17.07px;
+            font-weight: 700;
+            color: #F2F2F2;
+        }
+        .last {
+            @include txtDesc;
+            color: #E0E0E0;
+        }
+    }
+}
+
+.chat {
+    @include content;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 2.3fr;
+
+    .navigator {
+        padding: {
+            top: 24px;
+            left: 36px;
+            right: 16px;
+            bottom: 100px;
+        };
+        background-color: #4F4F4F;
+
+        .search {
+            border: 1px solid #BDBDBD;
+            position: relative;
+
+            .searchForm {
+                padding: 8px;
+
+                svg {
+                    position: absolute;
+                }
+
+                .searchInput {
+                    @include txtDesc;
+                    color: #BDBDBD;
+                    border: 0;
+                    background-color: #4f4f4f00;
+                }
+            }
+        }
+
+        .dialogs {
+            margin-top: 30px;
+            max-height: 300px;
+            overflow-y: auto; 
+
+            .dialog {
+                cursor: pointer;
+                padding: {
+                    top: 8px;
+                    bottom: 12px;
+                    left: 8px;
+                };
+                &.active {
+                    background-color: #464646;
+                }
+                &:hover {
+                    background-color: #464646;
+                }
+
+                
+
+                @include dialog;
+            }
+        }
+    }
+
+    .main {
+        display: grid;
+        grid-template-rows: 1fr 330px 1fr;
+        height: 100%;
+        background-color: #464646;
+        padding: {
+            top: 18px;
+            // left: 12px;
+            right: 34px;
+            bottom: 18px;
+        };
+
+        .header {
+            background-color: #424141;
+            padding: 8px;
+            @include dialog;
+            max-height: 56px;
+            
+            .headerPic {
+                width: 40px;
+                height: 40px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .dialogWindow {
+            // height: ;
+            scroll-behavior: smooth;
+            overflow-y: auto;
+            overflow-x: none;
+            padding: 32px 0 0 20px;
+
+            .message {
+                @include txtRegular;
+                color: #BDBDBD;
+                margin-bottom: 4px;
+
+                .me {
+                    color: #F2994A;
+                }
+                .other {
+                    color: #73DFF7;
+                }
+            }
+        }
+
+        .sendBlock {
+            padding-top: 32px;
+            padding-left: 19px;
+
+            .sendForm {
+                display: grid;
+                grid-template-columns: 1fr 67px;
+                .inputWrapper {
+
+                    .sendInput {
+                        @include txtDesc;
+                        font-family: 'Montserrat';
+                        border: 0;
+                        background-color: #4F4F4F;
+                        color: #E0E0E0;
+                        padding: 8px 72px 8px 22px;
+                        width: 100%;
+                        resize: none;
+                        min-height: 33.4px;
+                        // max-height: 50px;
+                        height: 34px;
+                        box-sizing: border-box;
+                    }
+                }
+
+                .buttonWrapper {
+                    padding-left: 20px;
+
+                    .sendButton {
+                        background-color: #4F4F4F;
+                        padding: 8px 18px 8px 14px;
+                    }
+                }
+                
+            }
+        }
+    }
+}

@@ -34,20 +34,31 @@ const CourseGrid: FC = () => {
 		asyncWrap();
 	}, []);
 
-	const gridItems = data?.map((course) => 
-		<CoursePreview 
-			key={course.id}
-			id={course.id}
-			pic={course.courseMainPictureUrl}
-			name={course.courseName}
-			// description={course.description}
-			description="Имена авторов, какая-то ещё инфа"
-		/>
-	)
+	// const gridItems = data?.map((course) => 
+	// 	<CoursePreview 
+	// 		key={course.id}
+	// 		id={course.id}
+	// 		pic={course.courseMainPictureUrl}
+	// 		name={course.courseName}
+	// 		// description={course.description}
+	// 		description="Имена авторов, какая-то ещё инфа"
+	// 	/>
+	// )
 
 	return (
 		<div className={s.grid}>
-			{gridItems}
+			{/* {gridItems} */}
+			{data && 
+				data?.map((course) => 
+				<CoursePreview 
+					key={course.id}
+					id={course.id}
+					pic={course.courseMainPictureUrl}
+					name={course.courseName}
+					// description={course.description}
+					description="Имена авторов, какая-то ещё инфа"
+				/>)
+			}
 		</div>
 	)
 }

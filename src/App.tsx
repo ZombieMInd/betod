@@ -16,6 +16,9 @@ import Profile from './components/Pages/Profile/Profile';
 import { Chat } from './components/Chat/Chat';
 import { MeType } from './types/me';
 import Problem from './components/Courses/Problem/Problem';
+import { GuardedRoute } from './components/Common/Helpers/GuardedRoute/GuardedRoute';
+import Cookies from 'js-cookie';
+import { Notifier } from './components/Notifier/Notifier';
 // import NotFound from './components/NotFound/NotFound';
 // import Login from './components/Login/Login';
 // import Header from './components/Header/Header'
@@ -25,7 +28,11 @@ import Problem from './components/Courses/Problem/Problem';
 const App = ({ ...props }) => {
     const dispatch = useDispatch()
     // const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo)
-    const logged = useSelector<AppStateType, boolean>(state => state.me.logged)
+    let logged = useSelector<AppStateType, boolean>(state => state.me.logged)
+    let token = Cookies.get('access-token');
+    if (token) {
+        logged = true;
+    }
 
     useLayoutEffect(() => {
         dispatch(authUser());
@@ -35,29 +42,31 @@ const App = ({ ...props }) => {
         document.title = "Betod";
      }, []);
 
-    if (!logged) {
-        return <LoginPage/>
-    }
+    // if (!logged) {
+    //     return <LoginPage/>
+    // }
 
     return (
         <>
         <Menu/>
         <Switch>
-            <Route path="/chat" component={Chat}/>
+            {/* <Route path="/chat" component={Chat}/> */}
             <Route path="/login" component={LoginPage}/>
             {/* {logged && (
                 <>
                 
                 </>
             )} */}
-            <Route path="/profile" component={Profile}/>
-            <Route path="/course/:courseid/problem/:id" component={Problem}/>
+            <GuardedRoute path="/profile" Component={Profile} auth={logged}/>
+            <GuardedRoute path="/course/:courseid/problem/:id" Component={Problem} auth={logged}/>
+            {/* <Route path="/course/:courseid/problem/:id" component={Problem}/> */}
             
-            <Route path="/course/:id" component={Course}/>
+            <GuardedRoute path="/course/:id" Component={Course} auth={logged}/>
             <Route path="/" component={Main}/>
         </Switch>
         
         <Footer/>
+        <Notifier/>
         </>
     );
 }

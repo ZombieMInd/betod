@@ -4,6 +4,7 @@
 
 .contentWrapper {
     @include content;
+	min-height: 90vh;
     padding: {
 		top: 100px;
 	}

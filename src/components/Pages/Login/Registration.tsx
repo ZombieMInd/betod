@@ -19,8 +19,10 @@ const Registration: FC = () => {
 
 
 	const validationSchema = yup.object({
-		// login: yup.string().required('Обязательное поле'),
-		// password: yup.string().min(8, 'Минимальная длина 8 символов').max(32, 'Максимальная длина 32 символа').required('Обязательное поле'),
+		recordBookNumber: yup.string().required('Обязательное поле'),
+		userName: yup.string().required('Обязательное поле'),
+		password: yup.string().min(8, 'Минимальная длина 8 символов').max(32, 'Максимальная длина 32 символа').required('Обязательное поле'),
+		passwordConfirm: yup.string().min(8, 'Минимальная длина 8 символов').max(32, 'Максимальная длина 32 символа').required('Обязательное поле'),
 	});
 
 

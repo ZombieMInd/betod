@@ -1,0 +1,91 @@
+@import '../../../../assets/scss/Colors.scss';
+
+.selectorBlock {
+	position: relative;
+	width: fit-content;
+	min-width: 95px;
+	padding: 8px;
+	background-color: $btn-grey;
+	text-align: center;
+
+	& .activeSelector {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		font-family: 'RF Dewi';
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 18px;
+		text-align: center;
+		cursor: pointer;
+
+		& .arrow {
+			margin-left: 10px;
+			transition: .3s;
+
+			&.rotate {
+				transform: rotate(180deg);
+			}
+		}	
+	}
+
+	& .selectorsList {
+		max-height: 200px;
+		overflow-y: auto;
+		z-index: 6;
+		position: absolute;
+		width: 100%;
+		flex-direction: column;
+		box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+		background : #fff;
+		top: 30px;
+		left: 0;
+		width: 100%;
+		display: none;
+		width: auto;
+		padding: 6px 0;
+		min-width: 100px;
+		&.active {
+			display: flex;
+		}
+
+		& .selectorElement {
+			width: 100%;
+			padding: 10px;
+			box-sizing: border-box;
+			cursor: pointer;
+			width: 100%;
+			font-family: 'RF Dewi';
+			font-size: 14px;
+			line-height: 18px;
+			text-align: center;
+			color: #000;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+			&:hover, &.active {
+				background: rgb(192, 192, 192);
+			}
+		}
+		
+		&::-webkit-scrollbar {
+			width: 5px;
+			height: 5px;
+			margin-left: 5px;
+		}
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: #1e1f2044;
+			border-radius: 5px;
+		}
+		&::-webkit-scrollbar-thumb:hover {
+			opacity: .5;
+		}
+
+	}
+	
+}

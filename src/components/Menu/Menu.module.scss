@@ -40,3 +40,17 @@
     }
     
 }
+
+.Footer {
+    margin-top: 180px;
+    height: 46px;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .Company {
+        @include txtDesc;
+        color: #4F4F4F;
+    }
+}

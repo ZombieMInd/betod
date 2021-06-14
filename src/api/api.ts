@@ -2,7 +2,7 @@ import Axios, { CancelToken, AxiosError, AxiosInstance } from 'axios';
 import { showAlert } from '../utils/showAlert';
 import { AlertifyStatusEnum } from '../types/types';
 
-export let apiURL = "https://mindcoat.site/"
+export let apiURL = "https://betod.ru/"
 
 export const axiosInstance = Axios.create({
 	baseURL: `${apiURL}api/`,

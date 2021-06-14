@@ -13,6 +13,7 @@ import CourseUser from '../../Courses/User';
 import CourseList from '../../Courses/List/List';
 import { Chat } from '../../Chat/Chat';
 import { useHistory } from 'react-router';
+import ChatPage from '../Chat/ChatPage';
 
 const Profile: FC = () => {
 	const dispatch = useDispatch()
@@ -32,7 +33,7 @@ const Profile: FC = () => {
 		},
 		{
 			name : "Чат",
-			content: <Chat/>
+			content: <ChatPage/>
 		},
 	];
 	return (

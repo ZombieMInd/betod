@@ -1,0 +1,77 @@
+@import '../../../assets/scss/Colors.scss';
+@import '../../../assets/scss/CommonStyle.scss';
+@import '../../../assets/scss/Buttons.scss';
+
+.problem {
+    @include content;
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    column-gap: 24px;
+    row-gap: 24px;
+    
+    .main {
+        margin-top: 68px;
+
+        .title {
+            @include h5;
+        }
+
+        .problemBody {
+            margin-top: 100px;
+
+            .text {
+                p {
+                    margin-bottom: 16px;
+                }
+            }
+
+            .solution {
+                margin-top: 80px;
+
+                .controls {
+                    display: flex;
+
+                    > div {
+                        margin-right: 24px;
+                    }
+                }
+                .editor {
+                    margin-top: 32px;
+                    border: 1px solid $header-grey;
+                }
+
+                .status {
+                    padding: 20px 0 0 0;
+                    font-weight: bold;
+                }
+
+                .wrapper {
+                    display: flex;
+                    justify-content: end;
+
+                    .send {
+                        @include button;
+                        background-color: #AFF1CB;
+                        margin-top: 24px;
+                    }
+                }
+                
+            }
+
+            .buttons {
+                display: flex;
+                justify-content: end;
+
+                .next {
+                    @include button;
+                    margin-top: 24px;
+                }
+            }
+            
+        }
+    }
+
+    .right {
+        margin-top: 168px;
+    }
+}

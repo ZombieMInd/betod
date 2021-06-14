@@ -1,0 +1,91 @@
+@import '../../../assets/scss/Colors.scss';
+@import '../../../assets/scss/CommonStyle.scss';
+@import '../../../assets/scss/Buttons.scss';
+
+.list {
+    margin-top: 32px;
+    margin-bottom: 132px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+
+    .listPreview {
+
+        .wrapper {
+
+            .body {
+                display: flex;
+
+                .left {
+
+                    .image {
+                        width: 240px;
+                        height: 82px;
+                        object-fit: cover;
+                    }
+
+                    .progress {
+                        margin-top: 16px;
+                        height: 8px;
+                        background-color: #C4C4C4;
+                        .inner {
+                            
+                            height: 8px;
+                            background-color: #219653;
+                            opacity: 0.4;
+                        }
+                    }
+                }
+
+                .right {
+                    margin-left: 24px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    .text {
+                        .name {
+                            @include h5;
+                            color: #4F4F4F;
+                        }
+                        
+                        .description {
+                            @include txtDesc;
+                            margin-top: 4px;
+                            
+                        }
+                    }
+
+                    .details {
+                        @include txtDesc;
+                        color: #4F4F4F;
+                        display: inline-flex;
+                        width: auto;
+
+                        .time {
+                            padding-left: 16px;
+                            position: relative;
+                            float: left;
+                            margin-right: 50%;
+                            svg {
+                                position: absolute;
+                                left: 0;
+                                top: 2px;
+                            }
+                        }
+
+                        .author {
+                            float: right;
+                        }
+                    }
+                }
+            }
+
+            .footer {
+                
+            }
+        }
+    }
+}

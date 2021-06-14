@@ -103,9 +103,42 @@
             .profilePic {
                 max-width: 218px;
                 overflow: hidden;
+                position: relative;
+                cursor: pointer;
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
 
                 img {
                     width: 100%;
+                }
+
+                .changePic {
+                    @include h5;
+                    color: #fff;
+                    display: none;
+                    position: absolute;
+                    top: 45%;
+                    text-align: center;
+                    width: 100%;
+                    margin: auto;
+                    z-index: 5;
+                }
+
+                &:hover{
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(121, 121, 121, 0.65);
+                        z-index: 2;
+                    }
+                    .changePic {
+                        display: block;
+                    }
                 }
             }
 

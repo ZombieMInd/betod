@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import s from './Profile.module.scss';
 import pic from '../../../assets/img/Profile.png';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,12 +43,18 @@ const Info: FC<IProps> = ({classes}) => {
 	const dispatch = useDispatch();
 	const userInfo = useSelector<AppStateType, MeType>(state => state.me.userInfo);
 	const data = moke; 
+	const [avatar, setAvatar] = useState('');
 	const [username, setUsername] = useState<string>(userInfo.username);
 	const [bio, setBio] = useState<string>(userInfo.userDescription);
+	const picInput = useRef(null);
 
 	useEffect(() => {
 		setUsername(userInfo.username);
 		setBio(userInfo.userDescription);
+		if (userInfo.userPicture)
+			setAvatar(userInfo.userPicture)
+		else 
+			setAvatar(pic)
 	}, [userInfo])
 
 	useEffect(() => {
@@ -80,10 +86,28 @@ const Info: FC<IProps> = ({classes}) => {
 		dispatch(logout());
 	}
 
+	const handleAvatarClick = () => {
+		if (picInput && picInput.current) {
+			const curr = picInput.current! as any
+            curr.click()
+		}
+	} 
+
+	const handleAvatarChange = (e : any) => {
+		e.preventDefault();
+		const files = [...e.currentTarget.files];
+		const data = new FormData();
+		data.append('avatar', files[0]);
+		const result = userAPI.postProfilePic(data);
+		setAvatar(URL.createObjectURL(files[0]))
+	}
+
 	return (
 		<div className={s.miniProfile}>
-			<div className={s.profilePic}>
-				<img src={userInfo.userPicture ? userInfo.userPicture : pic}/>
+			<div className={s.profilePic} onClick={handleAvatarClick}>
+				<img src={avatar}/>
+				<div className={s.changePic}>Загрузить фото</div>
+				<input type='file' style={{display: 'none'}} ref={picInput} onChange={handleAvatarChange}/>
 			</div>
 			<div className={s.body}>
 				<div className={s.name}>

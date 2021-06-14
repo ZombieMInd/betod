@@ -20,6 +20,7 @@ const CoursePreview: FC<CoursePreviewData> = ({id, pic, name, description }) => 
 		picture = mockPic;
 	} else {
 		picture = StaticPathResolver(pic);
+		console.log(picture);
 	}
 	return (
 		<div className={s.preview}>

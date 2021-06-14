@@ -62,7 +62,7 @@ export const login = (login: string, password: string, errorFunc: (message: stri
 
 export const authUser = (): types.ThunksType => async (dispatch) => {
 	let token = Cookies.get('access-token');
-
+	// console.log('token', token);
 	if (token) {
 		dispatch(setAccessToken(token))
 		dispatch(setLogged(true))
